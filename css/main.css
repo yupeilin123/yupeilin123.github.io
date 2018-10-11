@@ -1975,7 +1975,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ebffe9;
+  background: #7e38ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2107,7 +2107,7 @@ pre .javascript .function {
 .with-love {
   display: inline-block;
   margin: 0 5px;
-  color: #808080;
+  color: #ff0000;
 }
 .powered-by,
 .theme-info {
@@ -3235,5 +3235,11 @@ ul.breadcrumb li+li:last-child {
   }
 }
 .site-author-image {
+  border: none;
+}
+#rewardButton {
+  margin-top: 16px;
+}
+.post-tags a {
   border: none;
 }
