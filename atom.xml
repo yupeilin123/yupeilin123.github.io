@@ -69,7 +69,7 @@
     <link href="http://yoursite.com/2018/10/07/npm/npm-six-weekly/"/>
     <id>http://yoursite.com/2018/10/07/npm/npm-six-weekly/</id>
     <published>2018-10-07T07:56:48.000Z</published>
-    <updated>2018-10-11T03:25:32.110Z</updated>
+    <updated>2018-10-11T14:01:10.086Z</updated>
     
     <content type="html"><![CDATA[<p><strong>周2018.10.1 ~ 2018.10.7</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>每周npm模块源码解读：progress</code></p><p>github: <a href="https://github.com/visionmedia/node-progress" target="_blank" rel="noopener">https://github.com/visionmedia/node-progress</a></p><p>描述：提供在终端中灵活的进度条</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>首先定义了 <code>ProgressBar</code> 类，默认将 <code>process.stderr</code> 作为终端的输出，紧接着定义类属性。</p><p>该类有5个类方法，分明为 <code>tick</code> , <code>render</code> , <code>update</code> , <code>interrupt</code> 和 <code>terminate</code> 。着重讲述 <code>tick</code> 和 <code>render</code> 这两个方法。</p><p>方法 <code>tick</code> ：<br>设置属性 <code>renderThrottle</code> 值为0时，即立刻执行方法 <code>render</code> 。否则定义一个定时器，来执行方法 <code>render</code> 。如果当进度条完成时，执行 <code>terminate</code>。</p><p>方法 <code>render</code> ：<br>每一次定时器的执行的会生成表示进度条的字符，然后显示到终端上。是通过计算当前时刻已完成的和未完成的，然后通过字符串方法 <code>replace</code> 来替换。如果有自定义的token，也可以进行替换。</p><p>方法 <code>update</code> ：<br>作用是在进度条的过程中更新完成率和tokens，然后执行方法 <code>tick</code> 。每次 <code>update</code> 都会去重新去 <code>tick</code> 。</p><p>方法 <code>interrupt</code> ：<br>在此刻，输出message。实则是打断此刻的进度条输入信息。</p><p>方法 <code>terminate</code> ：</p><p>终止进度条。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>较好理解，每个属性和方法都有较为清晰的理解。可以从中学到流与终端的搭配使用。</p>]]></content>
     
@@ -117,7 +117,7 @@
     <link href="http://yoursite.com/2018/09/16/npm/npm-three-weekly/"/>
     <id>http://yoursite.com/2018/09/16/npm/npm-three-weekly/</id>
     <published>2018-09-16T08:09:36.000Z</published>
-    <updated>2018-10-11T03:25:34.976Z</updated>
+    <updated>2018-10-11T14:01:11.371Z</updated>
     
     <content type="html"><![CDATA[<p><strong>周2018.9.10 ~ 2018.9.16</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>cpy</code></p><p>github: <a href="https://github.com/sindresorhus/cpy" target="_blank" rel="noopener">https://github.com/sindresorhus/cpy</a></p><p>描述：可以用更好的方式去一次性复制多个文件</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>使用模块 <code>arrify</code> 将源路径转化为数组形式，然后通过模块 <code>globby</code> 得到需要复制的相应文件。</p><p>使用了 <code>Promise.all</code> 以便多文件的同步复制，主要是每个文件都需要被复制成功或被失败。<br>然后通过事件监听器和触发器得到多文件复制的状态。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>作者使用模块 <code>globby</code> 和 <code>cp-file</code> 实现了一次性复制多文件，然后通过事件监听器的形式与 <code>cp-file.on</code> 组合成了可以知道多文件复制的progress。</p>]]></content>
     

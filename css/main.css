@@ -1975,7 +1975,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffd5c2;
+  background: #ff5efb;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3228,10 +3228,10 @@ ul.breadcrumb li+li:last-child {
 }
 @media (min-width: 1600px) {
   .header {
-    width: 68%;
+    width: 66%;
   }
   .container .main-inner {
-    width: 68%;
+    width: 66%;
   }
 }
 .site-author-image {
