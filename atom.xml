@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>青蛙蛤蟆兽</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-10-11T09:34:56.451Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>yupeilin</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每周npm模块源码解读：meow</title>
+    <link href="http://yoursite.com/2018/10/09/npm/npm-seven-weekly/"/>
+    <id>http://yoursite.com/2018/10/09/npm/npm-seven-weekly/</id>
+    <published>2018-10-09T08:52:29.000Z</published>
+    <updated>2018-10-11T09:34:56.451Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;周2018.10.8 ~ 2018.10.14&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;meow&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/sindresorhus/meow&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/sindresorhus/meow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：以较简单的方式供使用者开发node命令行&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="npm" scheme="http://yoursite.com/tags/npm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每周npm模块源码解读：http-proxy</title>
+    <link href="http://yoursite.com/2018/10/08/npm/npm-five-weekly/"/>
+    <id>http://yoursite.com/2018/10/08/npm/npm-five-weekly/</id>
+    <published>2018-10-08T07:50:09.000Z</published>
+    <updated>2018-10-11T03:25:22.313Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;补 周2018.9.24 ~ 2018.9.30&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;http-proxy&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/nodejitsu/node-http-proxy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/nodejitsu/node-http-proxy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：是一个http代理库并支持websocket。适用于反向代理和负载均衡&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="npm" scheme="http://yoursite.com/tags/npm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每周npm模块源码解读：progress</title>
+    <link href="http://yoursite.com/2018/10/07/npm/npm-six-weekly/"/>
+    <id>http://yoursite.com/2018/10/07/npm/npm-six-weekly/</id>
+    <published>2018-10-07T07:56:48.000Z</published>
+    <updated>2018-10-11T03:25:32.110Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;周2018.10.1 ~ 2018.10.7&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;每周npm模块源码解读：progress&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/visionmedia/node-progress&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/visionmedia/node-progress&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：提供在终端中灵活的进度条&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="npm" scheme="http://yoursite.com/tags/npm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每周npm模块源码解读：cross-env</title>
+    <link href="http://yoursite.com/2018/09/23/npm/npm-four-weekly/"/>
+    <id>http://yoursite.com/2018/09/23/npm/npm-four-weekly/</id>
+    <published>2018-09-23T06:43:24.000Z</published>
+    <updated>2018-10-11T03:25:26.049Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;周2018.9.17 ~ 2018.9.23&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;cross-env&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/kentcdodds/cross-env&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/kentcdodds/cross-env&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：可以用单个命令去设置node的环境变量，并且不用考虑操作平台的区别&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="npm" scheme="http://yoursite.com/tags/npm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每周npm模块源码解读：cpy</title>
+    <link href="http://yoursite.com/2018/09/16/npm/npm-three-weekly/"/>
+    <id>http://yoursite.com/2018/09/16/npm/npm-three-weekly/</id>
+    <published>2018-09-16T08:09:36.000Z</published>
+    <updated>2018-10-11T03:25:34.976Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;周2018.9.10 ~ 2018.9.16&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;cpy&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/sindresorhus/cpy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/sindresorhus/cpy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：可以用更好的方式去一次性复制多个文件&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="npm" scheme="http://yoursite.com/tags/npm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每周npm模块源码解读：ora</title>
+    <link href="http://yoursite.com/2018/09/13/npm/npm-two-weekly/"/>
+    <id>http://yoursite.com/2018/09/13/npm/npm-two-weekly/</id>
+    <published>2018-09-13T14:00:55.000Z</published>
+    <updated>2018-10-11T03:25:37.392Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;补 周2018.9.3 ~ 2018.9.9&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;ora&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/sindresorhus/ora&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/sindresorhus/ora&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：提供更友好的配置式的终端spinner&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="npm" scheme="http://yoursite.com/tags/npm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每周npm模块源码解读：cp-file</title>
+    <link href="http://yoursite.com/2018/09/11/npm/npm-one-weekly/"/>
+    <id>http://yoursite.com/2018/09/11/npm/npm-one-weekly/</id>
+    <published>2018-09-11T15:55:50.000Z</published>
+    <updated>2018-10-11T03:25:29.195Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;补 周2018.9.1 ~ 2018.9.2&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;cp-file&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/sindresorhus/cp-file&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/sindresorhus/cp-file&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：以流的方式异步复制文件和 &lt;code&gt;fs.copyFileSync()&lt;/code&gt; 同步的方式，以及更友好的处理形式：如错误处理，和复制时的原地址和目标地址等&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="npm" scheme="http://yoursite.com/tags/npm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webpack4：如何搭建</title>
+    <link href="http://yoursite.com/2018/08/26/webpack4-build/"/>
+    <id>http://yoursite.com/2018/08/26/webpack4-build/</id>
+    <published>2018-08-26T06:47:21.000Z</published>
+    <updated>2018-10-11T03:26:05.397Z</updated>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;一直想学习webpack的环境配置，由于种种原因，一直拖到了这周才终于下定决定要弄明白。
+目前已经搭好了一个webpack4的react环境，虽然是从0到1搭建的，但过程中参考了create-react-app和vue-cli的webpack配置。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;第一步: 基本使用&lt;br&gt;首先新建一个目录，然后&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm init -y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm i webpack webpack-cli --save-dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="webpack" scheme="http://yoursite.com/tags/webpack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>你好，世界</title>
+    <link href="http://yoursite.com/2018/08/03/hello-world/"/>
+    <id>http://yoursite.com/2018/08/03/hello-world/</id>
+    <published>2018-08-03T06:48:51.000Z</published>
+    <updated>2018-10-10T09:55:16.429Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;大学的时候有搞过wordpress，但人的惰性嘛，坚持不下来，后面也不做了。&lt;br&gt;现在毕业了，觉得时间不等人，自己也明白，不能像之前贪玩了，&lt;br&gt;所以弄个博客，空闲的时候写写文章，写写技术上面的事情呐。&lt;br&gt;希望自己可以在这几年中沉淀出东西来。&lt;/p&gt;
+
+        
+      
+    
+    </summary>
+    
+    
+      <category term="me" scheme="http://yoursite.com/tags/me/"/>
+    
+  </entry>
+  
+</feed>
