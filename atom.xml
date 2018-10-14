@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-11T14:21:58.304Z</updated>
+  <updated>2018-10-14T15:27:52.013Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>学萧</title>
+    <link href="http://yoursite.com/2018/10/14/life/lean-xiao/"/>
+    <id>http://yoursite.com/2018/10/14/life/lean-xiao/</id>
+    <published>2018-10-14T15:23:41.000Z</published>
+    <updated>2018-10-14T15:27:52.013Z</updated>
+    
+    <content type="html"><![CDATA[<p>横吹是笛，竖吹是萧。</p><p>想学横吹，却买了萧。</p><p>萧难笛易，因于发声。</p><p>现已如此，好好学萧。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;横吹是笛，竖吹是萧。&lt;/p&gt;
+&lt;p&gt;想学横吹，却买了萧。&lt;/p&gt;
+&lt;p&gt;萧难笛易，因于发声。&lt;/p&gt;
+&lt;p&gt;现已如此，好好学萧。&lt;/p&gt;
+
+        
+      
+    
+    </summary>
+    
+    
+      <category term="生活，萧" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB%EF%BC%8C%E8%90%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>每周npm模块源码解读：meow</title>
@@ -109,32 +139,6 @@
 &lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;cross-env&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;github: &lt;a href=&quot;https://github.com/kentcdodds/cross-env&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/kentcdodds/cross-env&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;描述：可以用单个命令去设置node的环境变量，并且不用考虑操作平台的区别&lt;/p&gt;
-&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
-    
-    
-      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每周npm模块源码解读：cpy</title>
-    <link href="http://yoursite.com/2018/09/16/npm/npm-three-weekly/"/>
-    <id>http://yoursite.com/2018/09/16/npm/npm-three-weekly/</id>
-    <published>2018-09-16T08:09:36.000Z</published>
-    <updated>2018-10-11T14:21:35.682Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>周2018.9.10 ~ 2018.9.16</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>cpy</code></p><p>github: <a href="https://github.com/sindresorhus/cpy" target="_blank" rel="noopener">https://github.com/sindresorhus/cpy</a></p><p>描述：可以用更好的方式去一次性复制多个文件</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>使用模块 <code>arrify</code> 将源路径转化为数组形式，然后通过模块 <code>globby</code> 得到需要复制的相应文件。</p><p>使用了 <code>Promise.all</code> 以便多文件的同步复制，主要是每个文件都需要被复制成功或被失败。<br>然后通过事件监听器和触发器得到多文件复制的状态。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>作者使用模块 <code>globby</code> 和 <code>cp-file</code> 实现了一次性复制多文件，然后通过事件监听器的形式与 <code>cp-file.on</code> 组合成了可以知道多文件复制的progress。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;周2018.9.10 ~ 2018.9.16&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;cpy&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;github: &lt;a href=&quot;https://github.com/sindresorhus/cpy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/sindresorhus/cpy&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;描述：可以用更好的方式去一次性复制多个文件&lt;/p&gt;
 &lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
     
     </summary>
