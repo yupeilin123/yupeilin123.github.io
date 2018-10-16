@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-16T06:00:01.107Z</updated>
+  <updated>2018-10-16T05:51:05.235Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,33 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>我的心</title>
-    <link href="http://yoursite.com/2018/10/16/%E8%AF%97%E6%AD%8C/%E6%88%91%E7%9A%84%E5%BF%83/"/>
-    <id>http://yoursite.com/2018/10/16/诗歌/我的心/</id>
-    <published>2018-10-16T05:52:43.000Z</published>
-    <updated>2018-10-16T06:00:01.107Z</updated>
-    
-    <content type="html"><![CDATA[<p>在遇见你之前，它是静止的<br>遇见你之后就动了<br>于是我活了下来</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在遇见你之前，它是静止的&lt;br&gt;遇见你之后就动了&lt;br&gt;于是我活了下来&lt;/p&gt;
-
-        
-      
-    
-    </summary>
-    
-      <category term="诗歌" scheme="http://yoursite.com/categories/%E8%AF%97%E6%AD%8C/"/>
-    
-    
-  </entry>
   
   <entry>
     <title>学萧</title>
@@ -144,6 +117,32 @@
 &lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;http-proxy&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;github: &lt;a href=&quot;https://github.com/nodejitsu/node-http-proxy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/nodejitsu/node-http-proxy&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;描述：是一个http代理库并支持websocket。适用于反向代理和负载均衡&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
+    
+    
+      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每周npm模块源码解读：cross-env</title>
+    <link href="http://yoursite.com/2018/09/23/npm/cross-env/"/>
+    <id>http://yoursite.com/2018/09/23/npm/cross-env/</id>
+    <published>2018-09-23T06:43:24.000Z</published>
+    <updated>2018-10-16T05:51:51.928Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>周2018.9.17 ~ 2018.9.23</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>cross-env</code></p><p>github: <a href="https://github.com/kentcdodds/cross-env" target="_blank" rel="noopener">https://github.com/kentcdodds/cross-env</a></p><p>描述：可以用单个命令去设置node的环境变量，并且不用考虑操作平台的区别</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>首先通过一个 <code>parseCommand</code> 函数来解析命令行，返回环境参数、命令和命令参数。</p><p>再通过函数 <code>getEnvVars</code> 得到node的环境变量，函数执行过程是在平台windows上转化了变量（看了个半懂）。</p><p>最后就是通过模块 <code>cross-spwan</code> 来执行最终得到的命令。添加事件监听器来处理一些信号，以便来停止进程。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>正则不太好，导致部分正则匹配难以看懂。不过能懂得其模块思想。主要是通过解析转化命令行，再通过 <code>cross-spawn</code> 来执行最终的命令行。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;周2018.9.17 ~ 2018.9.23&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;cross-env&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/kentcdodds/cross-env&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/kentcdodds/cross-env&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：可以用单个命令去设置node的环境变量，并且不用考虑操作平台的区别&lt;/p&gt;
 &lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
     
     </summary>
