@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-15T01:48:30.960Z</updated>
+  <updated>2018-10-16T06:00:01.107Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>我的心</title>
+    <link href="http://yoursite.com/2018/10/16/%E8%AF%97%E6%AD%8C/%E6%88%91%E7%9A%84%E5%BF%83/"/>
+    <id>http://yoursite.com/2018/10/16/诗歌/我的心/</id>
+    <published>2018-10-16T05:52:43.000Z</published>
+    <updated>2018-10-16T06:00:01.107Z</updated>
+    
+    <content type="html"><![CDATA[<p>在遇见你之前，它是静止的<br>遇见你之后就动了<br>于是我活了下来</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在遇见你之前，它是静止的&lt;br&gt;遇见你之后就动了&lt;br&gt;于是我活了下来&lt;/p&gt;
+
+        
+      
+    
+    </summary>
+    
+      <category term="诗歌" scheme="http://yoursite.com/categories/%E8%AF%97%E6%AD%8C/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>学萧</title>
-    <link href="http://yoursite.com/2018/10/14/life/lean-xiao/"/>
-    <id>http://yoursite.com/2018/10/14/life/lean-xiao/</id>
+    <link href="http://yoursite.com/2018/10/14/life/%E5%AD%A6%E7%AE%AB/"/>
+    <id>http://yoursite.com/2018/10/14/life/学箫/</id>
     <published>2018-10-14T15:23:41.000Z</published>
-    <updated>2018-10-15T01:48:30.960Z</updated>
+    <updated>2018-10-16T05:51:05.235Z</updated>
     
     <content type="html"><![CDATA[<p>横吹是笛，竖吹是萧。</p><p>想学横吹，却买了萧。</p><p>萧难笛易，因于发声。</p><p>现已如此，好好学萧。</p>]]></content>
     
@@ -52,10 +79,10 @@
   
   <entry>
     <title>每周npm模块源码解读：meow</title>
-    <link href="http://yoursite.com/2018/10/09/npm/npm-seven-weekly/"/>
-    <id>http://yoursite.com/2018/10/09/npm/npm-seven-weekly/</id>
+    <link href="http://yoursite.com/2018/10/09/npm/meow/"/>
+    <id>http://yoursite.com/2018/10/09/npm/meow/</id>
     <published>2018-10-09T08:52:29.000Z</published>
-    <updated>2018-10-11T14:21:58.304Z</updated>
+    <updated>2018-10-16T05:51:39.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>周2018.10.8 ~ 2018.10.14</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>meow</code></p><p>github: <a href="https://github.com/sindresorhus/meow" target="_blank" rel="noopener">https://github.com/sindresorhus/meow</a></p><p>描述：以较简单的方式供使用者开发node命令行</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>最开始是正确处理promise的错误，防止没有 <code>.catch()</code> 时的静默处理（可以使用process的事件 <code>unhandledRejection</code> 代替）。</p><p>判断是否存在 <code>helpMessage</code> ，若无，则使 <code>helpMessage</code> 为空。使用 <code>Object.assign</code> 复制一个新的 <code>options</code> 对象。</p><p>当选项中的 <code>booleanDefault</code> 来使 <code>options.flag</code> 里的属性type的类型为 <code>boolean</code> 并且不存在属性default，给default赋值 <code>options.booleanDefault</code> 。</p><p>把转化好的 <code>minimistFlags</code> 又浅拷贝到变量 <code>minimistoptions</code> ，接着驼峰转化。可能使用的是 <code>yargs</code> , 要转化命令行带的参数。</p><p>接着标准化package.json的数据，设置进程名称。如果设置了选择的 <code>description</code> 则加入到 <code>helpMessage</code> 中。</p><p>定义了两个方法 <code>showHelp</code> 和 <code>showVersion</code> ，用来打印 <code>helpMessage</code> 和 <code>version</code> 并退出该进程。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>较少的代码量就提供了开发node命令行的功能，适用于小型的命令行开发。</p>]]></content>
     
@@ -78,10 +105,10 @@
   
   <entry>
     <title>每周npm模块源码解读：progress</title>
-    <link href="http://yoursite.com/2018/10/07/npm/npm-six-weekly/"/>
-    <id>http://yoursite.com/2018/10/07/npm/npm-six-weekly/</id>
+    <link href="http://yoursite.com/2018/10/07/npm/progress/"/>
+    <id>http://yoursite.com/2018/10/07/npm/progress/</id>
     <published>2018-10-07T07:56:48.000Z</published>
-    <updated>2018-10-11T14:21:32.765Z</updated>
+    <updated>2018-10-16T05:51:36.019Z</updated>
     
     <content type="html"><![CDATA[<p><strong>周2018.10.1 ~ 2018.10.7</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>每周npm模块源码解读：progress</code></p><p>github: <a href="https://github.com/visionmedia/node-progress" target="_blank" rel="noopener">https://github.com/visionmedia/node-progress</a></p><p>描述：提供在终端中灵活的进度条</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>首先定义了 <code>ProgressBar</code> 类，默认将 <code>process.stderr</code> 作为终端的输出，紧接着定义类属性。</p><p>该类有5个类方法，分明为 <code>tick</code> , <code>render</code> , <code>update</code> , <code>interrupt</code> 和 <code>terminate</code> 。着重讲述 <code>tick</code> 和 <code>render</code> 这两个方法。</p><p>方法 <code>tick</code> ：<br>设置属性 <code>renderThrottle</code> 值为0时，即立刻执行方法 <code>render</code> 。否则定义一个定时器，来执行方法 <code>render</code> 。如果当进度条完成时，执行 <code>terminate</code>。</p><p>方法 <code>render</code> ：<br>每一次定时器的执行的会生成表示进度条的字符，然后显示到终端上。是通过计算当前时刻已完成的和未完成的，然后通过字符串方法 <code>replace</code> 来替换。如果有自定义的token，也可以进行替换。</p><p>方法 <code>update</code> ：<br>作用是在进度条的过程中更新完成率和tokens，然后执行方法 <code>tick</code> 。每次 <code>update</code> 都会去重新去 <code>tick</code> 。</p><p>方法 <code>interrupt</code> ：<br>在此刻，输出message。实则是打断此刻的进度条输入信息。</p><p>方法 <code>terminate</code> ：</p><p>终止进度条。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>较好理解，每个属性和方法都有较为清晰的理解。可以从中学到流与终端的搭配使用。</p>]]></content>
     
@@ -104,10 +131,10 @@
   
   <entry>
     <title>每周npm模块源码解读：http-proxy</title>
-    <link href="http://yoursite.com/2018/09/30/npm/npm-five-weekly/"/>
-    <id>http://yoursite.com/2018/09/30/npm/npm-five-weekly/</id>
+    <link href="http://yoursite.com/2018/09/30/npm/http-proxy/"/>
+    <id>http://yoursite.com/2018/09/30/npm/http-proxy/</id>
     <published>2018-09-30T13:50:09.000Z</published>
-    <updated>2018-10-11T14:21:57.446Z</updated>
+    <updated>2018-10-16T05:51:47.132Z</updated>
     
     <content type="html"><![CDATA[<p><strong>补 周2018.9.24 ~ 2018.9.30</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>http-proxy</code></p><p>github: <a href="https://github.com/nodejitsu/node-http-proxy" target="_blank" rel="noopener">https://github.com/nodejitsu/node-http-proxy</a></p><p>描述：是一个http代理库并支持websocket。适用于反向代理和负载均衡</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>在函数 <code>ProxyServer</code> 上定义属性并赋值为代理的实例。当使用 <code>http-proxy</code> 时，类 <code>ProxyServer</code> 会继承 <code>EventEmitter3</code> ，选项 <code>perpendPath</code> 默认为true。</p><p>定义了类属性 <code>web</code> 、<code>proxyRequest</code> 、 <code>ws</code> 和 <code>proxyWebsocketRequest</code> 并赋值为创建正确的代理函数（web,websocket）。</p><p>定义类属性 <code>webPasses</code> 和 <code>wsPasses</code> ，分明是web和websocket的pass集合。</p><p>接着注册了一个 <code>error</code> 的监听器。以及5个类方法。</p><p>方法 <code>onError</code> ：在触发 <code>error</code> 事件时，执行的此方法。</p><p>方法 <code>listen</code> ：创建一个http、https或者websocket的服务器。</p><p>方法 <code>close</code> ：关闭服务器接着去执行回调。</p><p>方法 <code>before</code> 和 <code>after</code> ：去判断默认的passes是否存在传入的passName，若不存在则报错。</p><p>用户可以选项来选择是http,https或者是websocket。以http举例：</p><p>当用户开启代理，发起请求，会执行一个自定义函数。选项中的 <code>target</code> 和 <code>forward</code> 的值会被解析。接着去执行每一个pass。</p><p><code>deleteLength</code> ：如果请求方法为delete或者options并且请求头’content-length‘存在，则将’content-length‘赋值为‘0’，并且删除请求头属性‘transfer-encoding’。</p><p><code>timeout</code> ：设置了选项 <code>timeout</code> ，则会去判断该请求是否超时。</p><p><code>Xheaders</code> ：设置了选项 <code>xfwd</code> 为 true，则会在请求头中添加‘x-forwarded-for’、‘x-forwarded-port’、‘x-forwarded-proto’和‘x-forwarded-host’属性。</p><p><code>stream</code> ：在此方法中通过流，执行代理。判断选项是否有 <code>forward</code> ，有则定义一个 <code>http.request</code> ，然后创建 <code>forwardError</code> ，接着将请求或者选项中的 <code>buffer</code> 用流的方式去传入这个请求。</p><p>新建一个已 <code>target</code> 的 <code>http.request</code> ，注册事件 <code>socket</code> ，判断选项的 <code>proxyTimeout</code> ，来设置代理超时执行函数。</p><p>注册事件 <code>aborted</code> ，创建 <code>proxyError</code> 错误处理函数。将请求或者选项中的 <code>buffer</code> 用流的方式去传入这个 <code>proxyReq</code> 请求。</p><p>注册 <code>respone</code> 事件，并在该事件触发时，执行回调。判断响应是否存在 <code>headersSent</code> 和 选项中的 <code>selfHandleResponse</code> ，如分明为不存在或者为false，则执行 <code>webOutcgoing</code> 里的passes。</p><p>最后通过流传送响应值，关闭连接。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>不太复杂，但涉及到了http,https,websocket，有很多值得学习的点，如代理的‘x-forwarded’等。这个模块是7年前就开始了，还是有一些写法让小白迷惑。</p><p>除基本类型外，js一切皆为对象。</p>]]></content>
     
@@ -117,32 +144,6 @@
 &lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;http-proxy&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;github: &lt;a href=&quot;https://github.com/nodejitsu/node-http-proxy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/nodejitsu/node-http-proxy&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;描述：是一个http代理库并支持websocket。适用于反向代理和负载均衡&lt;/p&gt;
-&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
-    
-    
-      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每周npm模块源码解读：cross-env</title>
-    <link href="http://yoursite.com/2018/09/23/npm/npm-four-weekly/"/>
-    <id>http://yoursite.com/2018/09/23/npm/npm-four-weekly/</id>
-    <published>2018-09-23T06:43:24.000Z</published>
-    <updated>2018-10-11T14:21:21.490Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>周2018.9.17 ~ 2018.9.23</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>cross-env</code></p><p>github: <a href="https://github.com/kentcdodds/cross-env" target="_blank" rel="noopener">https://github.com/kentcdodds/cross-env</a></p><p>描述：可以用单个命令去设置node的环境变量，并且不用考虑操作平台的区别</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>首先通过一个 <code>parseCommand</code> 函数来解析命令行，返回环境参数、命令和命令参数。</p><p>再通过函数 <code>getEnvVars</code> 得到node的环境变量，函数执行过程是在平台windows上转化了变量（看了个半懂）。</p><p>最后就是通过模块 <code>cross-spwan</code> 来执行最终得到的命令。添加事件监听器来处理一些信号，以便来停止进程。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>正则不太好，导致部分正则匹配难以看懂。不过能懂得其模块思想。主要是通过解析转化命令行，再通过 <code>cross-spawn</code> 来执行最终的命令行。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;周2018.9.17 ~ 2018.9.23&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;cross-env&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;github: &lt;a href=&quot;https://github.com/kentcdodds/cross-env&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/kentcdodds/cross-env&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;描述：可以用单个命令去设置node的环境变量，并且不用考虑操作平台的区别&lt;/p&gt;
 &lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
     
     </summary>
