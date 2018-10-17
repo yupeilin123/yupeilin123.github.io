@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-16T05:51:05.235Z</updated>
+  <updated>2018-10-17T15:41:12.428Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每周npm模块源码解读：anywhere</title>
+    <link href="http://yoursite.com/2018/10/17/npm/anywhere/"/>
+    <id>http://yoursite.com/2018/10/17/npm/anywhere/</id>
+    <published>2018-10-17T14:20:38.000Z</published>
+    <updated>2018-10-17T15:41:12.428Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>周2018.10.15 ~ 2018.10.21</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>anywhere</code></p><p>github: <a href="https://github.com/JacksonTian/anywhere" target="_blank" rel="noopener">https://github.com/JacksonTian/anywhere</a></p><p>描述：随时随地将你的当前目录变成一个静态文件服务器的根目录</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>首先使用了模块 <code>minimist</code> 来解析参数。有两个参数是默认的，一个是端口号，另一个是静态文件的当前目录。</p><p>接着使用了模块 <code>connect</code> ，使用了两个中间件：</p><p><code>serve-static</code> : 默认把 <code>process.cwd</code> 作为静态目录，以及请求该目录下 <code>index.html</code> 。</p><p><code>serve-index</code> : 如果该目录下没有 <code>index.html</code> 文件，则将该目录下的文件列表作为请求返回值。</p><p>确定http端口号，以及https的端口号。得到当前ip的地址，或者是‘127.0.0.1’作为主机名。</p><p>创建http服务器，确定https服务器。</p><p>最后自动打开浏览器。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>实用方便的一个静态服务器。<br>在做完静态页面的时候，想在手机上测试，就使用到了它，通过局域网，在手机上就能访问到了本地的文件。<br>但这个包可以做的更好。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;周2018.10.15 ~ 2018.10.21&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;anywhere&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/JacksonTian/anywhere&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/JacksonTian/anywhere&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：随时随地将你的当前目录变成一个静态文件服务器的根目录&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
+    
+    
+      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
+    
+  </entry>
   
   <entry>
     <title>学萧</title>
@@ -117,32 +143,6 @@
 &lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;http-proxy&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;github: &lt;a href=&quot;https://github.com/nodejitsu/node-http-proxy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/nodejitsu/node-http-proxy&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;描述：是一个http代理库并支持websocket。适用于反向代理和负载均衡&lt;/p&gt;
-&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
-    
-    
-      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每周npm模块源码解读：cross-env</title>
-    <link href="http://yoursite.com/2018/09/23/npm/cross-env/"/>
-    <id>http://yoursite.com/2018/09/23/npm/cross-env/</id>
-    <published>2018-09-23T06:43:24.000Z</published>
-    <updated>2018-10-16T05:51:51.928Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>周2018.9.17 ~ 2018.9.23</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>cross-env</code></p><p>github: <a href="https://github.com/kentcdodds/cross-env" target="_blank" rel="noopener">https://github.com/kentcdodds/cross-env</a></p><p>描述：可以用单个命令去设置node的环境变量，并且不用考虑操作平台的区别</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>首先通过一个 <code>parseCommand</code> 函数来解析命令行，返回环境参数、命令和命令参数。</p><p>再通过函数 <code>getEnvVars</code> 得到node的环境变量，函数执行过程是在平台windows上转化了变量（看了个半懂）。</p><p>最后就是通过模块 <code>cross-spwan</code> 来执行最终得到的命令。添加事件监听器来处理一些信号，以便来停止进程。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>正则不太好，导致部分正则匹配难以看懂。不过能懂得其模块思想。主要是通过解析转化命令行，再通过 <code>cross-spawn</code> 来执行最终的命令行。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;周2018.9.17 ~ 2018.9.23&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;cross-env&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;github: &lt;a href=&quot;https://github.com/kentcdodds/cross-env&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/kentcdodds/cross-env&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;描述：可以用单个命令去设置node的环境变量，并且不用考虑操作平台的区别&lt;/p&gt;
 &lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
     
     </summary>
