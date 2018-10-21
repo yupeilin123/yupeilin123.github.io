@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-17T15:41:12.428Z</updated>
+  <updated>2018-10-21T08:09:06.748Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>online-static中文指南</title>
+    <link href="http://yoursite.com/2018/10/21/online-static/"/>
+    <id>http://yoursite.com/2018/10/21/online-static/</id>
+    <published>2018-10-21T07:51:57.000Z</published>
+    <updated>2018-10-21T08:09:06.748Z</updated>
+    
+    <content type="html"><![CDATA[<p>online-static 是一个更好的、更简单的静态文件服务器。你能使用它然后可以在电脑或手机上查看静态文件。并且当文件发生变化时能自动刷新浏览器。</p><h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><p>首先你可以先执行 <code>npm install online-static -g</code> 命令，</p><p>然后打开你的项目目录，使用命令 <code>online</code>， </p><p>它能自然帮你打开浏览器显示<code>index.html</code>，</p><p>如果 <code>index.html</code> 文件不存在，则它将你的项目目录下的所有文件展示出来。</p><a id="more"></a><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>在项目的目录中使用 <code>online</code> 命令。或者，您可以添加作为命令行参数的路径。</p><p>命令行参数：</p><ul><li><code>-p</code> or <code>--port</code> 端口使用，默认8091</li><li><code>-n</code> or <code>--no-browser</code> 是否自动打开浏览器</li><li><code>-t</code> or <code>--target</code> 选择打开哪个文件，默认 <code>index.html</code></li><li><code>-d</code> or <code>--dir</code> 选择工作目录，默认 <code>process.cwd</code></li><li><code>-g</code> or <code>--gzip</code> 是否开启gize压缩</li><li><code>-r</code> or <code>--reload</code> 观察文件或目录的变化，自动刷新。默认选择 <code>target file</code>，只有两个选项 <code>target</code> 或者 <code>dir</code></li><li><code>-h</code> or <code>--help</code> 打印用法</li></ul><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">online -p 8000 // start static file server in port 8000</span><br><span class="line">online -n // don&apos;t open browser automatically</span><br><span class="line">online -t index.js // the index.js file will be opened</span><br><span class="line">online -d src //  the src directory under the current directory will be working directory</span><br><span class="line">online -g // open gizp encoding</span><br><span class="line">online -r dir // all files in the current directory will be monitored.</span><br></pre></td></tr></table></figure><h2 id="参与贡献"><a href="#参与贡献" class="headerlink" title="参与贡献"></a>参与贡献</h2><p>非常欢迎你的贡献，你可以通过以下方式和我们一起共建：</p><ul><li>通过 Issue bug 或进行咨询。</li><li>提交 Pull Request 改进代码。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;online-static 是一个更好的、更简单的静态文件服务器。你能使用它然后可以在电脑或手机上查看静态文件。并且当文件发生变化时能自动刷新浏览器。&lt;/p&gt;
+&lt;h2 id=&quot;怎么使用&quot;&gt;&lt;a href=&quot;#怎么使用&quot; class=&quot;headerlink&quot; title=&quot;怎么使用&quot;&gt;&lt;/a&gt;怎么使用&lt;/h2&gt;&lt;p&gt;首先你可以先执行 &lt;code&gt;npm install online-static -g&lt;/code&gt; 命令，&lt;/p&gt;
+&lt;p&gt;然后打开你的项目目录，使用命令 &lt;code&gt;online&lt;/code&gt;， &lt;/p&gt;
+&lt;p&gt;它能自然帮你打开浏览器显示&lt;code&gt;index.html&lt;/code&gt;，&lt;/p&gt;
+&lt;p&gt;如果 &lt;code&gt;index.html&lt;/code&gt; 文件不存在，则它将你的项目目录下的所有文件展示出来。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
+    
+    
+      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
+    
+  </entry>
   
   <entry>
     <title>每周npm模块源码解读：anywhere</title>
@@ -117,32 +143,6 @@
 &lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;每周npm模块源码解读：progress&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;github: &lt;a href=&quot;https://github.com/visionmedia/node-progress&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/visionmedia/node-progress&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;描述：提供在终端中灵活的进度条&lt;/p&gt;
-&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
-    
-    
-      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每周npm模块源码解读：http-proxy</title>
-    <link href="http://yoursite.com/2018/09/30/npm/http-proxy/"/>
-    <id>http://yoursite.com/2018/09/30/npm/http-proxy/</id>
-    <published>2018-09-30T13:50:09.000Z</published>
-    <updated>2018-10-16T05:51:47.132Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>补 周2018.9.24 ~ 2018.9.30</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>http-proxy</code></p><p>github: <a href="https://github.com/nodejitsu/node-http-proxy" target="_blank" rel="noopener">https://github.com/nodejitsu/node-http-proxy</a></p><p>描述：是一个http代理库并支持websocket。适用于反向代理和负载均衡</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>在函数 <code>ProxyServer</code> 上定义属性并赋值为代理的实例。当使用 <code>http-proxy</code> 时，类 <code>ProxyServer</code> 会继承 <code>EventEmitter3</code> ，选项 <code>perpendPath</code> 默认为true。</p><p>定义了类属性 <code>web</code> 、<code>proxyRequest</code> 、 <code>ws</code> 和 <code>proxyWebsocketRequest</code> 并赋值为创建正确的代理函数（web,websocket）。</p><p>定义类属性 <code>webPasses</code> 和 <code>wsPasses</code> ，分明是web和websocket的pass集合。</p><p>接着注册了一个 <code>error</code> 的监听器。以及5个类方法。</p><p>方法 <code>onError</code> ：在触发 <code>error</code> 事件时，执行的此方法。</p><p>方法 <code>listen</code> ：创建一个http、https或者websocket的服务器。</p><p>方法 <code>close</code> ：关闭服务器接着去执行回调。</p><p>方法 <code>before</code> 和 <code>after</code> ：去判断默认的passes是否存在传入的passName，若不存在则报错。</p><p>用户可以选项来选择是http,https或者是websocket。以http举例：</p><p>当用户开启代理，发起请求，会执行一个自定义函数。选项中的 <code>target</code> 和 <code>forward</code> 的值会被解析。接着去执行每一个pass。</p><p><code>deleteLength</code> ：如果请求方法为delete或者options并且请求头’content-length‘存在，则将’content-length‘赋值为‘0’，并且删除请求头属性‘transfer-encoding’。</p><p><code>timeout</code> ：设置了选项 <code>timeout</code> ，则会去判断该请求是否超时。</p><p><code>Xheaders</code> ：设置了选项 <code>xfwd</code> 为 true，则会在请求头中添加‘x-forwarded-for’、‘x-forwarded-port’、‘x-forwarded-proto’和‘x-forwarded-host’属性。</p><p><code>stream</code> ：在此方法中通过流，执行代理。判断选项是否有 <code>forward</code> ，有则定义一个 <code>http.request</code> ，然后创建 <code>forwardError</code> ，接着将请求或者选项中的 <code>buffer</code> 用流的方式去传入这个请求。</p><p>新建一个已 <code>target</code> 的 <code>http.request</code> ，注册事件 <code>socket</code> ，判断选项的 <code>proxyTimeout</code> ，来设置代理超时执行函数。</p><p>注册事件 <code>aborted</code> ，创建 <code>proxyError</code> 错误处理函数。将请求或者选项中的 <code>buffer</code> 用流的方式去传入这个 <code>proxyReq</code> 请求。</p><p>注册 <code>respone</code> 事件，并在该事件触发时，执行回调。判断响应是否存在 <code>headersSent</code> 和 选项中的 <code>selfHandleResponse</code> ，如分明为不存在或者为false，则执行 <code>webOutcgoing</code> 里的passes。</p><p>最后通过流传送响应值，关闭连接。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>不太复杂，但涉及到了http,https,websocket，有很多值得学习的点，如代理的‘x-forwarded’等。这个模块是7年前就开始了，还是有一些写法让小白迷惑。</p><p>除基本类型外，js一切皆为对象。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;补 周2018.9.24 ~ 2018.9.30&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;http-proxy&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;github: &lt;a href=&quot;https://github.com/nodejitsu/node-http-proxy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/nodejitsu/node-http-proxy&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;描述：是一个http代理库并支持websocket。适用于反向代理和负载均衡&lt;/p&gt;
 &lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
     
     </summary>
