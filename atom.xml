@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-21T08:27:54.791Z</updated>
+  <updated>2018-10-22T07:00:19.634Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>koa</title>
+    <link href="http://yoursite.com/2018/10/22/koa/koa-middleware/"/>
+    <id>http://yoursite.com/2018/10/22/koa/koa-middleware/</id>
+    <published>2018-10-22T06:26:27.000Z</published>
+    <updated>2018-10-22T07:00:19.634Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>每周npm模块源码解读已经写了8周了，个人觉得这种叙述方式对于没看过源码的读者不太友好。</p><p>而大部分的读者也又不会去看这些模块的源码(根本没有读者)。</p><h3 id="koa简介"><a href="#koa简介" class="headerlink" title="koa简介"></a>koa简介</h3><p>Koa是一个新的web框架，由Express幕后的原班人马打造，致力于成为web应用和API开发领域中的一个更小、更富有表现力、更健壮的基石。</p><p>通过利用async函数，Koa帮你丢弃回调函数，并有力地增强错误处理。 Koa并没有捆绑任何中间件，而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。</p><h3 id="市场"><a href="#市场" class="headerlink" title="市场"></a>市场</h3><p>并且很多公司在Koa的基础上进行更深层次的包装，比如egg.js，think.js等。</p><h3 id="打算"><a href="#打算" class="headerlink" title="打算"></a>打算</h3><p>换种更友好的叙述方式来完成Koa中间件系列，会从中间件中挑选不同类型的一种较知名的模块来分析。</p><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>有26种不同类型的中间件，也就是26篇。另外加10篇其他的，计划完成36篇。</p><p>计划今年过年前完成，也就是2019年2月4日截止。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;前提&quot;&gt;&lt;a href=&quot;#前提&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
+  
+  <entry>
     <title>staticky中文指南</title>
     <link href="http://yoursite.com/2018/10/21/staticky/"/>
     <id>http://yoursite.com/2018/10/21/staticky/</id>
     <published>2018-10-21T07:51:57.000Z</published>
-    <updated>2018-10-21T08:27:54.791Z</updated>
+    <updated>2018-10-22T06:31:59.193Z</updated>
     
     <content type="html"><![CDATA[<p>staticky 是一个更好的、更简单的静态文件服务器。你能使用它然后可以在电脑或手机上查看静态文件。并且当文件发生变化时能自动刷新浏览器。</p><h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><p>首先你可以先执行 <code>npm install staticky -g</code> 命令，</p><p>然后打开你的项目目录，使用命令 <code>staticky</code>， </p><p>它能自然帮你打开浏览器显示<code>index.html</code>，</p><p>如果 <code>index.html</code> 文件不存在，则它将你的项目目录下的所有文件展示出来。</p><a id="more"></a><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>在项目的目录中使用 <code>staticky</code> 命令。或者，您可以添加作为命令行参数的路径。</p><p>命令行参数：</p><ul><li><code>-p</code> or <code>--port</code> 端口使用，默认8091</li><li><code>-n</code> or <code>--no-browser</code> 是否自动打开浏览器</li><li><code>-t</code> or <code>--target</code> 选择打开哪个文件，默认 <code>index.html</code></li><li><code>-d</code> or <code>--dir</code> 选择工作目录，默认 <code>process.cwd</code></li><li><code>-g</code> or <code>--gzip</code> 是否开启gize压缩</li><li><code>-r</code> or <code>--reload</code> 观察文件或目录的变化，自动刷新。默认选择 <code>target file</code>，只有两个选项 <code>target</code> 或者 <code>dir</code></li><li><code>-h</code> or <code>--help</code> 打印用法</li></ul><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">staticky -p 8000 // start static file server in port 8000</span><br><span class="line">staticky -n // don&apos;t open browser automatically</span><br><span class="line">staticky -t index.js // the index.js file will be opened</span><br><span class="line">staticky -d src //  the src directory under the current directory will be working directory</span><br><span class="line">staticky -g // open gizp encoding</span><br><span class="line">staticky -r dir // all files in the current directory will be monitored.</span><br></pre></td></tr></table></figure><h2 id="参与贡献"><a href="#参与贡献" class="headerlink" title="参与贡献"></a>参与贡献</h2><p>非常欢迎你的贡献，你可以通过以下方式和我们一起共建：</p><ul><li>通过 Issue bug 或进行咨询。</li><li>提交 Pull Request 改进代码。</li></ul>]]></content>
     
@@ -35,10 +63,8 @@
     
     </summary>
     
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
     
-    
-      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
+      <category term="staticky" scheme="http://yoursite.com/tags/staticky/"/>
     
   </entry>
   
@@ -117,32 +143,6 @@
 &lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;meow&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;github: &lt;a href=&quot;https://github.com/sindresorhus/meow&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/sindresorhus/meow&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;描述：以较简单的方式供使用者开发node命令行&lt;/p&gt;
-&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
-    
-    
-      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每周npm模块源码解读：progress</title>
-    <link href="http://yoursite.com/2018/10/07/npm/progress/"/>
-    <id>http://yoursite.com/2018/10/07/npm/progress/</id>
-    <published>2018-10-07T07:56:48.000Z</published>
-    <updated>2018-10-16T05:51:36.019Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>周2018.10.1 ~ 2018.10.7</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>每周npm模块源码解读：progress</code></p><p>github: <a href="https://github.com/visionmedia/node-progress" target="_blank" rel="noopener">https://github.com/visionmedia/node-progress</a></p><p>描述：提供在终端中灵活的进度条</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>首先定义了 <code>ProgressBar</code> 类，默认将 <code>process.stderr</code> 作为终端的输出，紧接着定义类属性。</p><p>该类有5个类方法，分明为 <code>tick</code> , <code>render</code> , <code>update</code> , <code>interrupt</code> 和 <code>terminate</code> 。着重讲述 <code>tick</code> 和 <code>render</code> 这两个方法。</p><p>方法 <code>tick</code> ：<br>设置属性 <code>renderThrottle</code> 值为0时，即立刻执行方法 <code>render</code> 。否则定义一个定时器，来执行方法 <code>render</code> 。如果当进度条完成时，执行 <code>terminate</code>。</p><p>方法 <code>render</code> ：<br>每一次定时器的执行的会生成表示进度条的字符，然后显示到终端上。是通过计算当前时刻已完成的和未完成的，然后通过字符串方法 <code>replace</code> 来替换。如果有自定义的token，也可以进行替换。</p><p>方法 <code>update</code> ：<br>作用是在进度条的过程中更新完成率和tokens，然后执行方法 <code>tick</code> 。每次 <code>update</code> 都会去重新去 <code>tick</code> 。</p><p>方法 <code>interrupt</code> ：<br>在此刻，输出message。实则是打断此刻的进度条输入信息。</p><p>方法 <code>terminate</code> ：</p><p>终止进度条。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>较好理解，每个属性和方法都有较为清晰的理解。可以从中学到流与终端的搭配使用。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;周2018.10.1 ~ 2018.10.7&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;每周npm模块源码解读：progress&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;github: &lt;a href=&quot;https://github.com/visionmedia/node-progress&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/visionmedia/node-progress&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;描述：提供在终端中灵活的进度条&lt;/p&gt;
 &lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
     
     </summary>
