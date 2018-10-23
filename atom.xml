@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-22T07:00:19.634Z</updated>
+  <updated>2018-10-23T06:34:39.202Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每周npm模块源码解读：pify</title>
+    <link href="http://yoursite.com/2018/10/23/npm/pify/"/>
+    <id>http://yoursite.com/2018/10/23/npm/pify/</id>
+    <published>2018-10-23T05:54:37.000Z</published>
+    <updated>2018-10-23T06:34:39.202Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>周2018.10.22 ~ 2018.10.28</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>pify</code></p><p>github: <a href="https://github.com/sindresorhus/pify" target="_blank" rel="noopener">https://github.com/sindresorhus/pify</a></p><p>描述：将回调函数promise化，也就是回调函数可以使用then、catch</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>首先通过 <code>Object.assign</code> 返回新的配置选项，然后判断pify的第一个参数的类型。如类型不正确，则报错。</p><p>如果第一个参数的类型是函数，则创建一个函数，根据 <code>excludeMain</code> 来判断是用它本身自己还是promise化的回调。</p><p>如果第一个参数的类型是对象，则创建一个新的对象，这个对象的原型为这个对象的原型。接着去遍历第一个参数(对象)，通过三表表达式判断对象的每个Key是否为函数和一个筛选函数，如果为true，则将这个函数promise化，否则直接返回该值。</p><p>函数 <code>processFn</code> 就是将回调函数promise化。先创建Promsise函数，然后在其通过配置选项处理参数。最后通过 <code>fn.apply(this.args)</code> 来执行。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>node中的大部分异步函数可以用模块pify来promise化。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;周2018.10.22 ~ 2018.10.28&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;pify&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/sindresorhus/pify&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/sindresorhus/pify&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：将回调函数promise化，也就是回调函数可以使用then、catch&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
+    
+    
+      <category term="Npm" scheme="http://yoursite.com/tags/Npm/"/>
+    
+  </entry>
   
   <entry>
     <title>koa</title>
@@ -125,32 +151,6 @@
       <category term="生活" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB/"/>
     
       <category term="萧" scheme="http://yoursite.com/tags/%E8%90%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每周npm模块源码解读：meow</title>
-    <link href="http://yoursite.com/2018/10/09/npm/meow/"/>
-    <id>http://yoursite.com/2018/10/09/npm/meow/</id>
-    <published>2018-10-09T08:52:29.000Z</published>
-    <updated>2018-10-16T05:51:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>周2018.10.8 ~ 2018.10.14</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>meow</code></p><p>github: <a href="https://github.com/sindresorhus/meow" target="_blank" rel="noopener">https://github.com/sindresorhus/meow</a></p><p>描述：以较简单的方式供使用者开发node命令行</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>最开始是正确处理promise的错误，防止没有 <code>.catch()</code> 时的静默处理（可以使用process的事件 <code>unhandledRejection</code> 代替）。</p><p>判断是否存在 <code>helpMessage</code> ，若无，则使 <code>helpMessage</code> 为空。使用 <code>Object.assign</code> 复制一个新的 <code>options</code> 对象。</p><p>当选项中的 <code>booleanDefault</code> 来使 <code>options.flag</code> 里的属性type的类型为 <code>boolean</code> 并且不存在属性default，给default赋值 <code>options.booleanDefault</code> 。</p><p>把转化好的 <code>minimistFlags</code> 又浅拷贝到变量 <code>minimistoptions</code> ，接着驼峰转化。可能使用的是 <code>yargs</code> , 要转化命令行带的参数。</p><p>接着标准化package.json的数据，设置进程名称。如果设置了选择的 <code>description</code> 则加入到 <code>helpMessage</code> 中。</p><p>定义了两个方法 <code>showHelp</code> 和 <code>showVersion</code> ，用来打印 <code>helpMessage</code> 和 <code>version</code> 并退出该进程。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>较少的代码量就提供了开发node命令行的功能，适用于小型的命令行开发。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;周2018.10.8 ~ 2018.10.14&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;meow&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;github: &lt;a href=&quot;https://github.com/sindresorhus/meow&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/sindresorhus/meow&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;描述：以较简单的方式供使用者开发node命令行&lt;/p&gt;
-&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
-    
-    
-      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
     
   </entry>
   
