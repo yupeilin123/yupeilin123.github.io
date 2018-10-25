@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-23T06:34:39.202Z</updated>
+  <updated>2018-10-25T15:41:28.686Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-Security：koa-helmet</title>
+    <link href="http://yoursite.com/2018/10/25/koa/koa-helmet/"/>
+    <id>http://yoursite.com/2018/10/25/koa/koa-helmet/</id>
+    <published>2018-10-25T13:29:18.000Z</published>
+    <updated>2018-10-25T15:41:28.686Z</updated>
+    
+    <content type="html"><![CDATA[<p>主要是通过 npm 包 <code>helemt</code> 来实现开发者的应用程序更加安全。 </p><p><code>helemt</code> 主要是与另一个著名的 node.js Web 应该框架 <code>Express</code> 搭配使用。</p><p>现在是通过一个函数 <code>koaHelmetPromisify</code> 来使用，具体的写法对我来说有点小惊讶，有兴趣的小伙伴可以去看看。</p><p><code>helment</code> 通过设置 Http 头来使应用程序更加安全:</p><p><code>Content-Security-Policy</code> : 内容安全策略 (CSP) 是一个额外的安全层，用于检测并削弱某些特定类型的攻击，包括跨站脚本 (XSS) 和数据注入攻击等。无论是数据盗取、网站内容污染还是散发恶意软件，这些攻击都是主要的手段。(<a href="http://www.ruanyifeng.com/blog/2016/09/csp.html" target="_blank" rel="noopener">参考1</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP" target="_blank" rel="noopener">参考2</a>)</p><a id="more"></a><p><code>X-DNS-Prefetch-Control</code> : 控制着浏览器的 DNS 预读取功能。 DNS 预读取是一项使浏览器主动去执行域名解析的功能，其范围包括文档的所有链接，无论是图片的，CSS 的，还是 JavaScript 等其他用户能够点击的 URL。(<a href="https://www.cloudxns.net/Support/detail/id/1273.html" target="_blank" rel="noopener">参考1</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Controlling_DNS_prefetching" target="_blank" rel="noopener">参考2</a>、<a href="https://www.jianshu.com/p/c3a14a853c79" target="_blank" rel="noopener">参考3</a>)</p><p><code>Expect-CT</code> : 允许站点选择性报告和/或执行证书透明度 (Certificate Transparency) 要求，来防止错误签发的网站证书的使用不被察觉。当站点启用 Expect-CT 头，就是在请求浏览器检查该网站的任何证书是否出现在公共证书透明度日志之中。(<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Expect-CT" target="_blank" rel="noopener">参考1</a>、<a href="https://httpwg.org/http-extensions/expect-ct.html" target="_blank" rel="noopener">参考2</a>)</p><p><code>Feature-Policy</code> : 标头提供了一种机制，允许和拒绝在其自己的框架中以及嵌入的iframe中使用浏览器功能。(<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy" target="_blank" rel="noopener">参考1</a>、<a href="https://developers.google.com/web/updates/2018/06/feature-policy" target="_blank" rel="noopener">参考2</a>、<a href="https://wicg.github.io/feature-policy/#default-allowlists" target="_blank" rel="noopener">参考3</a>)</p><p><code>X-Frame-Options</code> : 用来给浏览器指示允许一个页面可否在frame, &lt; iframe &gt; 或者 &lt; object &gt; 中展现的标记。网站可以使用此功能，来确保自己网站的内容没有被嵌到别人的网站中去，也从而避免了点击劫持 (clickjacking) 的攻击。(<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/X-Frame-Options" target="_blank" rel="noopener">参考</a>)</p><p><code>X-Powered-By</code> : 表明用于支持当前网页应用程序的技术 (例如：PHP)。(<a href="http://www.qttc.net/201306340.html" target="_blank" rel="noopener">参考</a>)</p><p><code>Public-Key-Pins</code> : 是一种安全功能，它告诉 Web 客户端将特定加密公钥与某个 Web 服务器相关联，以降低使用伪造证书进行 MITM 攻击的风险。(<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning" target="_blank" rel="noopener">参考1</a>、<a href="https://imququ.com/post/http-public-key-pinning.html" target="_blank" rel="noopener">参考2</a>)</p><p><code>Strict-Transport-Security</code> : 是一个安全功能，它告诉浏览器只能通过 HTTPS 访问当前资源，而不是 HTTP。(<a href="https://developer.mozilla.org/zh-CN/docs/Security/HTTP_Strict_Transport_Security" target="_blank" rel="noopener">参考1</a>、<a href="https://blog.wilddog.com/?page_id=1493" target="_blank" rel="noopener">参考2</a>、<a href="https://www.cnblogs.com/xiewenming/p/7298893.html" target="_blank" rel="noopener">参考3</a>)</p><p><code>X-Download-Options</code> : 设置 noopen 为阻止 IE8 以上的用户在您的站点上下文中执行下载，指示浏览器不要直接在浏览器中打开下载，而是仅提供“保存”选项。(<a href="https://rorsecurity.info/portfolio/new-http-headers-for-more-security" target="_blank" rel="noopener">参考</a>)</p><p><code>Cache-Control</code> : 通用消息头字段被用于在http 请求和响应中通过指定指令来实现缓存机制。缓存指令是单向的, 这意味着在请求设置的指令，在响应中不一定包含相同的指令。(<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control" target="_blank" rel="noopener">参考</a>)</p><p><code>Pragma</code> : 是一个在 HTTP/1.0 中规定的通用首部，这个首部的效果依赖于不同的实现，所以在“请求-响应”链中可能会有不同的效果。它用来向后兼容只支持 HTTP/1.0 协议的缓存服务器，与 Cache-Control: no-cache 效果一致。强制要求缓存服务器在返回缓存的版本之前将请求提交到源头服务器进行验证。(<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Pragma" target="_blank" rel="noopener">参考</a>)</p><p><code>Expires</code> : 响应头包含日期/时间， 即在此时候之后，响应过期。(<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Expires" target="_blank" rel="noopener">参考</a>)</p><p><code>Surrogate-Control</code> : 通过检查来自源服务器的响应中的缓存头来确定要缓存的内容。(<a href="https://www.w3.org/TR/edge-arch/" target="_blank" rel="noopener">参考1</a>、<a href="https://www.nuevocloud.com/documentation/getting-started/cache-headers-cache-control-surrogate-control-and-expires" target="_blank" rel="noopener">参考2</a>)</p><p><code>X-Content-Type-Options</code> : 被服务器用来提示客户端一定要遵循在 Content-Type 首部中对  MIME 类型 的设定，而不能对其进行修改。这就禁用了客户端的 MIME 类型嗅探行。(<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-Content-Type-Options" target="_blank" rel="noopener">参考1</a>、<a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85" target="_blank" rel="noopener">参考2</a>)</p><p><code>X-Permitted-Cross-Domain-Policies</code> : 为Web客户端提供了跨域处理数据的权限 (如Adobe Flash或Adobe Acrobat)。(<a href="http://www.valencynetworks.com/blogs/x-permitted-cross-domain-policies/" target="_blank" rel="noopener">参考</a>)</p><p><code>Referrer-Policy</code> : 首部用来监管哪些访问来源信息，会在 Referer 中发送，应该被包含在生成的请求当中。(<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Referrer-Policy" target="_blank" rel="noopener">参考1</a>、<a href="https://linux.cn/article-5808-1.html" target="_blank" rel="noopener">参考2</a>)</p><p><code>X-XSS-Protection</code> : 当检测到跨站脚本攻击 (XSS) 时，浏览器将停止加载页面。(<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-XSS-Protection" target="_blank" rel="noopener">参考1</a>,<a href="http://www.freebuf.com/articles/web/138769.html" target="_blank" rel="noopener">参考2</a>)</p><p>从这么多的 Http 头中看出，使用 <code>helemt</code> 对应用程序的安全性有了极大的保障。但也有一些不是必须的，就可以使用如 <code>helmet.contentSecurityPolicy</code> 单独来设置 Http 头。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;主要是通过 npm 包 &lt;code&gt;helemt&lt;/code&gt; 来实现开发者的应用程序更加安全。 &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;helemt&lt;/code&gt; 主要是与另一个著名的 node.js Web 应该框架 &lt;code&gt;Express&lt;/code&gt; 搭配使用。&lt;/p&gt;
+&lt;p&gt;现在是通过一个函数 &lt;code&gt;koaHelmetPromisify&lt;/code&gt; 来使用，具体的写法对我来说有点小惊讶，有兴趣的小伙伴可以去看看。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;helment&lt;/code&gt; 通过设置 Http 头来使应用程序更加安全:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Content-Security-Policy&lt;/code&gt; : 内容安全策略 (CSP) 是一个额外的安全层，用于检测并削弱某些特定类型的攻击，包括跨站脚本 (XSS) 和数据注入攻击等。无论是数据盗取、网站内容污染还是散发恶意软件，这些攻击都是主要的手段。(&lt;a href=&quot;http://www.ruanyifeng.com/blog/2016/09/csp.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;参考1&lt;/a&gt;、&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;参考2&lt;/a&gt;)&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>每周npm模块源码解读：pify</title>
@@ -75,9 +101,9 @@
     <link href="http://yoursite.com/2018/10/21/staticky/"/>
     <id>http://yoursite.com/2018/10/21/staticky/</id>
     <published>2018-10-21T07:51:57.000Z</published>
-    <updated>2018-10-22T06:31:59.193Z</updated>
+    <updated>2018-10-23T15:41:10.893Z</updated>
     
-    <content type="html"><![CDATA[<p>staticky 是一个更好的、更简单的静态文件服务器。你能使用它然后可以在电脑或手机上查看静态文件。并且当文件发生变化时能自动刷新浏览器。</p><h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><p>首先你可以先执行 <code>npm install staticky -g</code> 命令，</p><p>然后打开你的项目目录，使用命令 <code>staticky</code>， </p><p>它能自然帮你打开浏览器显示<code>index.html</code>，</p><p>如果 <code>index.html</code> 文件不存在，则它将你的项目目录下的所有文件展示出来。</p><a id="more"></a><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>在项目的目录中使用 <code>staticky</code> 命令。或者，您可以添加作为命令行参数的路径。</p><p>命令行参数：</p><ul><li><code>-p</code> or <code>--port</code> 端口使用，默认8091</li><li><code>-n</code> or <code>--no-browser</code> 是否自动打开浏览器</li><li><code>-t</code> or <code>--target</code> 选择打开哪个文件，默认 <code>index.html</code></li><li><code>-d</code> or <code>--dir</code> 选择工作目录，默认 <code>process.cwd</code></li><li><code>-g</code> or <code>--gzip</code> 是否开启gize压缩</li><li><code>-r</code> or <code>--reload</code> 观察文件或目录的变化，自动刷新。默认选择 <code>target file</code>，只有两个选项 <code>target</code> 或者 <code>dir</code></li><li><code>-h</code> or <code>--help</code> 打印用法</li></ul><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">staticky -p 8000 // start static file server in port 8000</span><br><span class="line">staticky -n // don&apos;t open browser automatically</span><br><span class="line">staticky -t index.js // the index.js file will be opened</span><br><span class="line">staticky -d src //  the src directory under the current directory will be working directory</span><br><span class="line">staticky -g // open gizp encoding</span><br><span class="line">staticky -r dir // all files in the current directory will be monitored.</span><br></pre></td></tr></table></figure><h2 id="参与贡献"><a href="#参与贡献" class="headerlink" title="参与贡献"></a>参与贡献</h2><p>非常欢迎你的贡献，你可以通过以下方式和我们一起共建：</p><ul><li>通过 Issue bug 或进行咨询。</li><li>提交 Pull Request 改进代码。</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>staticky 是一个更好的、更简单的静态文件服务器。你能使用它然后可以在电脑或手机上查看静态文件。并且当文件发生变化时能自动刷新浏览器。</p><h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><p>首先你可以先执行 <code>npm install staticky -g</code> 命令，</p><p>然后打开你的项目目录，使用命令 <code>staticky</code>， </p><p>它能自然帮你打开浏览器显示<code>index.html</code>，</p><p>如果 <code>index.html</code> 文件不存在，则它将你的项目目录下的所有文件展示出来。</p><a id="more"></a><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>在项目的目录中使用 <code>staticky</code> 命令。或者，您可以添加作为命令行参数的路径。</p><p>命令行参数：</p><ul><li><code>-p</code> or <code>--port</code> 端口使用，默认8091</li><li><code>-n</code> or <code>--no-browser</code> 是否自动打开浏览器</li><li><code>-t</code> or <code>--target</code> 选择打开哪个文件，默认 <code>index.html</code></li><li><code>-d</code> or <code>--dir</code> 选择工作目录，默认 <code>process.cwd</code></li><li><code>-g</code> or <code>--gzip</code> 是否开启gize压缩</li><li><code>-r</code> or <code>--reload</code> 观察文件或目录的变化，自动刷新。默认选择 <code>target file</code>，只有两个选项 <code>target</code> 或者 <code>dir</code></li><li><code>-h</code> or <code>--help</code> 打印用法</li></ul><p><strong>注意</strong>：添加了完善的content-type判断，用以区分是否需要监听文件变化。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">staticky -p 8000 // start static file server in port 8000</span><br><span class="line">staticky -n // don&apos;t open browser automatically</span><br><span class="line">staticky -t index.js // the index.js file will be opened</span><br><span class="line">staticky -d src //  the src directory under the current directory will be working directory</span><br><span class="line">staticky -g // open gizp encoding</span><br><span class="line">staticky -r dir // all files in the current directory will be monitored.</span><br></pre></td></tr></table></figure><h2 id="参与贡献"><a href="#参与贡献" class="headerlink" title="参与贡献"></a>参与贡献</h2><p>非常欢迎你的贡献，你可以通过以下方式和我们一起共建：</p><ul><li>通过 Issue bug 或进行咨询。</li><li>提交 Pull Request 改进代码。</li></ul>]]></content>
     
     <summary type="html">
     
@@ -117,40 +143,6 @@
     
     
       <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学萧</title>
-    <link href="http://yoursite.com/2018/10/14/life/%E5%AD%A6%E7%AE%AB/"/>
-    <id>http://yoursite.com/2018/10/14/life/学箫/</id>
-    <published>2018-10-14T15:23:41.000Z</published>
-    <updated>2018-10-16T05:51:05.235Z</updated>
-    
-    <content type="html"><![CDATA[<p>横吹是笛，竖吹是萧。</p><p>想学横吹，却买了萧。</p><p>萧难笛易，因于发声。</p><p>现已如此，好好学萧。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;横吹是笛，竖吹是萧。&lt;/p&gt;
-&lt;p&gt;想学横吹，却买了萧。&lt;/p&gt;
-&lt;p&gt;萧难笛易，因于发声。&lt;/p&gt;
-&lt;p&gt;现已如此，好好学萧。&lt;/p&gt;
-
-        
-      
-    
-    </summary>
-    
-      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="生活" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-      <category term="萧" scheme="http://yoursite.com/tags/%E8%90%A7/"/>
     
   </entry>
   
