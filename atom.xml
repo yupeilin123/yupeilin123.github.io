@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-31T06:18:10.742Z</updated>
+  <updated>2018-11-03T07:29:45.144Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-Body Parsing：koa-bodyparser</title>
+    <link href="http://yoursite.com/2018/11/03/koa/koa-bodyparser/"/>
+    <id>http://yoursite.com/2018/11/03/koa/koa-bodyparser/</id>
+    <published>2018-11-03T06:48:54.000Z</published>
+    <updated>2018-11-03T07:29:45.144Z</updated>
+    
+    <content type="html"><![CDATA[<p>具体的body解析是基于模块 <code>co-body</code> ，而 <code>co-body</code> 是对模块 <code>raw-body</code> 更高级的封装。</p><p>首先是对配置项的操作，如自定义JSON检测函数 <code>detectJSON</code> ，自定义错误处理函数 <code>onerror</code> 等。</p><p>默认接受的请求类型是 <code>json</code> 和 <code>form</code> ，只有在能接受的类型下才可以执行下一步。</p><p>比较重要的一点是将选项 <code>returnRawBody</code> 默认为true且不能修改，是因为要返回的是解析后的值。</p><p>接着分别处理 <code>json</code> 、 <code>form</code> 和 <code>text</code> 的配置选项。然后与用户定义的 <code>extendTypes</code> 进行合并。</p><p>最后通过 <code>co-body</code> 进行处理。</p><p>该模块是对 <code>co-body</code> 进行封装以便在koa2中使用。在配置选项上比 <code>co-body</code> 的更加丰富。总体来说比较简单，但还是有疑问在。</p><p>为什么要对 <code>opts.detectJSON</code> ，<code>opts.onerror</code> 赋值给 <code>detectJSON</code> , <code>onerror</code> 之后重新赋值 <code>detectJSON</code> 。是因为后续对 <code>opts</code> 的操作不会不影响这两个函数吗？</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;具体的body解析是基于模块 &lt;code&gt;co-body&lt;/code&gt; ，而 &lt;code&gt;co-body&lt;/code&gt; 是对模块 &lt;code&gt;raw-body&lt;/code&gt; 更高级的封装。&lt;/p&gt;
+&lt;p&gt;首先是对配置项的操作，如自定义JSON检测函数
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>每周npm模块源码解读：dateFormat</title>
@@ -119,30 +148,6 @@
     
     
       <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>staticky中文指南</title>
-    <link href="http://yoursite.com/2018/10/21/staticky/"/>
-    <id>http://yoursite.com/2018/10/21/staticky/</id>
-    <published>2018-10-21T07:51:57.000Z</published>
-    <updated>2018-10-23T15:41:10.893Z</updated>
-    
-    <content type="html"><![CDATA[<p>staticky 是一个更好的、更简单的静态文件服务器。你能使用它然后可以在电脑或手机上查看静态文件。并且当文件发生变化时能自动刷新浏览器。</p><h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><p>首先你可以先执行 <code>npm install staticky -g</code> 命令，</p><p>然后打开你的项目目录，使用命令 <code>staticky</code>， </p><p>它能自然帮你打开浏览器显示<code>index.html</code>，</p><p>如果 <code>index.html</code> 文件不存在，则它将你的项目目录下的所有文件展示出来。</p><a id="more"></a><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>在项目的目录中使用 <code>staticky</code> 命令。或者，您可以添加作为命令行参数的路径。</p><p>命令行参数：</p><ul><li><code>-p</code> or <code>--port</code> 端口使用，默认8091</li><li><code>-n</code> or <code>--no-browser</code> 是否自动打开浏览器</li><li><code>-t</code> or <code>--target</code> 选择打开哪个文件，默认 <code>index.html</code></li><li><code>-d</code> or <code>--dir</code> 选择工作目录，默认 <code>process.cwd</code></li><li><code>-g</code> or <code>--gzip</code> 是否开启gize压缩</li><li><code>-r</code> or <code>--reload</code> 观察文件或目录的变化，自动刷新。默认选择 <code>target file</code>，只有两个选项 <code>target</code> 或者 <code>dir</code></li><li><code>-h</code> or <code>--help</code> 打印用法</li></ul><p><strong>注意</strong>：添加了完善的content-type判断，用以区分是否需要监听文件变化。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">staticky -p 8000 // start static file server in port 8000</span><br><span class="line">staticky -n // don&apos;t open browser automatically</span><br><span class="line">staticky -t index.js // the index.js file will be opened</span><br><span class="line">staticky -d src //  the src directory under the current directory will be working directory</span><br><span class="line">staticky -g // open gizp encoding</span><br><span class="line">staticky -r dir // all files in the current directory will be monitored.</span><br></pre></td></tr></table></figure><h2 id="参与贡献"><a href="#参与贡献" class="headerlink" title="参与贡献"></a>参与贡献</h2><p>非常欢迎你的贡献，你可以通过以下方式和我们一起共建：</p><ul><li>通过 Issue bug 或进行咨询。</li><li>提交 Pull Request 改进代码。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;staticky 是一个更好的、更简单的静态文件服务器。你能使用它然后可以在电脑或手机上查看静态文件。并且当文件发生变化时能自动刷新浏览器。&lt;/p&gt;
-&lt;h2 id=&quot;怎么使用&quot;&gt;&lt;a href=&quot;#怎么使用&quot; class=&quot;headerlink&quot; title=&quot;怎么使用&quot;&gt;&lt;/a&gt;怎么使用&lt;/h2&gt;&lt;p&gt;首先你可以先执行 &lt;code&gt;npm install staticky -g&lt;/code&gt; 命令，&lt;/p&gt;
-&lt;p&gt;然后打开你的项目目录，使用命令 &lt;code&gt;staticky&lt;/code&gt;， &lt;/p&gt;
-&lt;p&gt;它能自然帮你打开浏览器显示&lt;code&gt;index.html&lt;/code&gt;，&lt;/p&gt;
-&lt;p&gt;如果 &lt;code&gt;index.html&lt;/code&gt; 文件不存在，则它将你的项目目录下的所有文件展示出来。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="staticky" scheme="http://yoursite.com/tags/staticky/"/>
     
   </entry>
   
