@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-03T07:29:45.144Z</updated>
+  <updated>2018-11-05T06:39:38.364Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,24 +17,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Koa系列-Parameter Validation：koa-context-validator</title>
+    <link href="http://yoursite.com/2018/11/05/koa/koa-context-validator/"/>
+    <id>http://yoursite.com/2018/11/05/koa/koa-context-validator/</id>
+    <published>2018-11-05T05:42:07.000Z</published>
+    <updated>2018-11-05T06:39:38.364Z</updated>
+    
+    <content type="html"><![CDATA[<p>Koa的该类型中间件数量并不是很多，并且没有几个符合要求，目前这个中间件 <code>koa-context-validator</code> 达到要求。</p><p>具体的验证参数是模块 <code>joi</code> 提供的。</p><p>第一个参数 <code>schema</code> 是定义了需要验证的内容。如用post时，可以这么写，验证body中的username和age。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.use(validator(&#123;</span><br><span class="line">  body: object().keys(&#123;</span><br><span class="line">    username: string().required(),</span><br><span class="line">    age: number().required(),</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure><a id="more"></a><p>第二个参数 <code>opts_</code> 则是 <code>joi.validate</code> 方法的参数 <code>options</code> 。</p><p>通过 <code>Object.assign</code> 将参数opts_重新复制到另一个变量opts上。然后将ctx和opts.context重新赋值到opts.context上。 </p><p>接着遍历schema，通过函数 <code>isContextOnlyKey</code> 判断是否有key等于 <code>params</code> ,决定需要验证的数据源是 <code>ctx</code> 或者 <code>ctx.request</code> 。</p><p>方法 <code>validate</code> 已经被模块 <code>thenify</code> promiseify了。所以在遍历中，验证每个schema，然后放入到数组中。待遍历结束，通过 <code>Promise.all</code> 来判断每个schema是否已经验证通过。</p><p>关于参数验证的规则，看了 <code>joi</code> 的api文档，所提供的api足够完成常规的参数验证的需求。但个人还是比较喜欢中间件 <code>koa-validate</code> 的用法，可惜该模块只能在Koa_v1中使用。</p><p>业界也有其他比较好的参数验证的模块，如 <code>parameter</code> 等。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Koa的该类型中间件数量并不是很多，并且没有几个符合要求，目前这个中间件 &lt;code&gt;koa-context-validator&lt;/code&gt; 达到要求。&lt;/p&gt;
+&lt;p&gt;具体的验证参数是模块 &lt;code&gt;joi&lt;/code&gt; 提供的。&lt;/p&gt;
+&lt;p&gt;第一个参数 &lt;code&gt;schema&lt;/code&gt; 是定义了需要验证的内容。如用post时，可以这么写，验证body中的username和age。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;app.use(validator(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  body: object().keys(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    username: string().required(),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    age: number().required(),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Koa系列-Body Parsing：koa-bodyparser</title>
     <link href="http://yoursite.com/2018/11/03/koa/koa-bodyparser/"/>
     <id>http://yoursite.com/2018/11/03/koa/koa-bodyparser/</id>
     <published>2018-11-03T06:48:54.000Z</published>
-    <updated>2018-11-03T07:29:45.144Z</updated>
+    <updated>2018-11-05T05:45:03.110Z</updated>
     
-    <content type="html"><![CDATA[<p>具体的body解析是基于模块 <code>co-body</code> ，而 <code>co-body</code> 是对模块 <code>raw-body</code> 更高级的封装。</p><p>首先是对配置项的操作，如自定义JSON检测函数 <code>detectJSON</code> ，自定义错误处理函数 <code>onerror</code> 等。</p><p>默认接受的请求类型是 <code>json</code> 和 <code>form</code> ，只有在能接受的类型下才可以执行下一步。</p><p>比较重要的一点是将选项 <code>returnRawBody</code> 默认为true且不能修改，是因为要返回的是解析后的值。</p><p>接着分别处理 <code>json</code> 、 <code>form</code> 和 <code>text</code> 的配置选项。然后与用户定义的 <code>extendTypes</code> 进行合并。</p><p>最后通过 <code>co-body</code> 进行处理。</p><p>该模块是对 <code>co-body</code> 进行封装以便在koa2中使用。在配置选项上比 <code>co-body</code> 的更加丰富。总体来说比较简单，但还是有疑问在。</p><p>为什么要对 <code>opts.detectJSON</code> ，<code>opts.onerror</code> 赋值给 <code>detectJSON</code> , <code>onerror</code> 之后重新赋值 <code>detectJSON</code> 。是因为后续对 <code>opts</code> 的操作不会不影响这两个函数吗？</p>]]></content>
+    <content type="html"><![CDATA[<p>具体的body解析是基于模块 <code>co-body</code> ，而 <code>co-body</code> 是对模块 <code>raw-body</code> 更高级的封装。</p><p>首先是对配置项的操作，如自定义JSON检测函数 <code>detectJSON</code> ，自定义错误处理函数 <code>onerror</code> 等。</p><p>默认接受的请求类型是 <code>json</code> 和 <code>form</code> ，只有在能接受的类型下才可以执行下一步。</p><p>比较重要的一点是将选项 <code>returnRawBody</code> 默认为true且不能修改，是因为要返回的是解析后的值。</p><a id="more"></a><p>接着分别处理 <code>json</code> 、 <code>form</code> 和 <code>text</code> 的配置选项。然后与用户定义的 <code>extendTypes</code> 进行合并。</p><p>最后通过 <code>co-body</code> 进行处理。</p><p>该模块是对 <code>co-body</code> 进行封装以便在koa2中使用。在配置选项上比 <code>co-body</code> 的更加丰富。总体来说比较简单，但还是有疑问在。</p><p>为什么要对 <code>opts.detectJSON</code> ，<code>opts.onerror</code> 赋值给 <code>detectJSON</code> , <code>onerror</code> 之后重新赋值 <code>detectJSON</code> 。是因为后续对 <code>opts</code> 的操作不会不影响这两个函数吗？</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;具体的body解析是基于模块 &lt;code&gt;co-body&lt;/code&gt; ，而 &lt;code&gt;co-body&lt;/code&gt; 是对模块 &lt;code&gt;raw-body&lt;/code&gt; 更高级的封装。&lt;/p&gt;
-&lt;p&gt;首先是对配置项的操作，如自定义JSON检测函数
-        
-      
+      &lt;p&gt;具体的body解析是基于模块 &lt;code&gt;co-body&lt;/code&gt; ，而 &lt;code&gt;co-body&lt;/code&gt; 是对模块 &lt;code&gt;raw-body&lt;/code&gt; 更高级的封装。&lt;/p&gt;
+&lt;p&gt;首先是对配置项的操作，如自定义JSON检测函数 &lt;code&gt;detectJSON&lt;/code&gt; ，自定义错误处理函数 &lt;code&gt;onerror&lt;/code&gt; 等。&lt;/p&gt;
+&lt;p&gt;默认接受的请求类型是 &lt;code&gt;json&lt;/code&gt; 和 &lt;code&gt;form&lt;/code&gt; ，只有在能接受的类型下才可以执行下一步。&lt;/p&gt;
+&lt;p&gt;比较重要的一点是将选项 &lt;code&gt;returnRawBody&lt;/code&gt; 默认为true且不能修改，是因为要返回的是解析后的值。&lt;/p&gt;
     
     </summary>
     
@@ -120,34 +141,6 @@
     
     
       <category term="Npm" scheme="http://yoursite.com/tags/Npm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>koa</title>
-    <link href="http://yoursite.com/2018/10/22/koa/koa-middleware/"/>
-    <id>http://yoursite.com/2018/10/22/koa/koa-middleware/</id>
-    <published>2018-10-22T06:26:27.000Z</published>
-    <updated>2018-10-22T07:00:19.634Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>每周npm模块源码解读已经写了8周了，个人觉得这种叙述方式对于没看过源码的读者不太友好。</p><p>而大部分的读者也又不会去看这些模块的源码(根本没有读者)。</p><h3 id="koa简介"><a href="#koa简介" class="headerlink" title="koa简介"></a>koa简介</h3><p>Koa是一个新的web框架，由Express幕后的原班人马打造，致力于成为web应用和API开发领域中的一个更小、更富有表现力、更健壮的基石。</p><p>通过利用async函数，Koa帮你丢弃回调函数，并有力地增强错误处理。 Koa并没有捆绑任何中间件，而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。</p><h3 id="市场"><a href="#市场" class="headerlink" title="市场"></a>市场</h3><p>并且很多公司在Koa的基础上进行更深层次的包装，比如egg.js，think.js等。</p><h3 id="打算"><a href="#打算" class="headerlink" title="打算"></a>打算</h3><p>换种更友好的叙述方式来完成Koa中间件系列，会从中间件中挑选不同类型的一种较知名的模块来分析。</p><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>有26种不同类型的中间件，也就是26篇。另外加10篇其他的，计划完成36篇。</p><p>计划今年过年前完成，也就是2019年2月4日截止。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;前提&quot;&gt;&lt;a href=&quot;#前提&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
     
   </entry>
   
