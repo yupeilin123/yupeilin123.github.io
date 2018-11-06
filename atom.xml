@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-05T06:39:38.364Z</updated>
+  <updated>2018-11-06T06:59:04.581Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-Rate Limiting：koa-ratelimit</title>
+    <link href="http://yoursite.com/2018/11/06/koa/koa-ratelimit/"/>
+    <id>http://yoursite.com/2018/11/06/koa/koa-ratelimit/</id>
+    <published>2018-11-06T05:51:07.000Z</published>
+    <updated>2018-11-06T06:59:04.581Z</updated>
+    
+    <content type="html"><![CDATA[<p>该中间件是用来控制api请求的速率限制，用于数据库 <code>redis</code> ，基于模块 <code>ratelimiter</code> 。</p><p>关于 <code>Rate Limits</code> 有三个响应头，分别是：</p><p><code>X-RateLimit-Remaining</code> ：当前速率限制窗口中的剩余请求数。</p><p><code>X-RateLimit-Reset</code> ：当前速率限制窗口在UTC世界标准时中的重置时间。</p><p><code>X-RateLimit-Limit</code> ：允许用户每小时的最大请求数。</p><p>有两个比较重要的配置选择， <code>id</code> 主要是用来区分用户，默认以用户ip作为区分，另外一个是 <code>db</code> ，是数据库 <code>redis</code> 的实例。</p><p>当实例 <code>ratelimiter</code> 并执行其方法时，会返回一个对象，包含四个属性 <code>total</code> ， <code>remaining</code> ， <code>reset</code> 和 <code>resetMs</code> 。</p><p>当 <code>remaining</code> 为0时，也就是剩余请求数为0时，响应头则添加 <code>Retry-After</code> ，并将状态码设置为429，并返回消息。</p><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><p><a href="https://www.fullcontact.com/developer/docs/rate-limits/" target="_blank" rel="noopener">https://www.fullcontact.com/developer/docs/rate-limits/</a><br><a href="https://developer.capsulecrm.com/v1/ratelimit/" target="_blank" rel="noopener">https://developer.capsulecrm.com/v1/ratelimit/</a><br><a href="https://blog.apisyouwonthate.com/what-is-api-rate-limiting-all-about-1819a390ab06" target="_blank" rel="noopener">https://blog.apisyouwonthate.com/what-is-api-rate-limiting-all-about-1819a390ab06</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;该中间件是用来控制api请求的速率限制，用于数据库 &lt;code&gt;redis&lt;/code&gt; ，基于模块 &lt;code&gt;ratelimiter&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;关于 &lt;code&gt;Rate Limits&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>Koa系列-Parameter Validation：koa-context-validator</title>
@@ -115,32 +144,6 @@
     
     
       <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每周npm模块源码解读：pify</title>
-    <link href="http://yoursite.com/2018/10/23/npm/pify/"/>
-    <id>http://yoursite.com/2018/10/23/npm/pify/</id>
-    <published>2018-10-23T05:54:37.000Z</published>
-    <updated>2018-10-23T06:34:39.202Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>周2018.10.22 ~ 2018.10.28</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>pify</code></p><p>github: <a href="https://github.com/sindresorhus/pify" target="_blank" rel="noopener">https://github.com/sindresorhus/pify</a></p><p>描述：将回调函数promise化，也就是回调函数可以使用then、catch</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>首先通过 <code>Object.assign</code> 返回新的配置选项，然后判断pify的第一个参数的类型。如类型不正确，则报错。</p><p>如果第一个参数的类型是函数，则创建一个函数，根据 <code>excludeMain</code> 来判断是用它本身自己还是promise化的回调。</p><p>如果第一个参数的类型是对象，则创建一个新的对象，这个对象的原型为这个对象的原型。接着去遍历第一个参数(对象)，通过三表表达式判断对象的每个Key是否为函数和一个筛选函数，如果为true，则将这个函数promise化，否则直接返回该值。</p><p>函数 <code>processFn</code> 就是将回调函数promise化。先创建Promsise函数，然后在其通过配置选项处理参数。最后通过 <code>fn.apply(this.args)</code> 来执行。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>node中的大部分异步函数可以用模块pify来promise化。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;周2018.10.22 ~ 2018.10.28&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;pify&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;github: &lt;a href=&quot;https://github.com/sindresorhus/pify&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/sindresorhus/pify&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;描述：将回调函数promise化，也就是回调函数可以使用then、catch&lt;/p&gt;
-&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
-    
-    
-      <category term="Npm" scheme="http://yoursite.com/tags/Npm/"/>
     
   </entry>
   
