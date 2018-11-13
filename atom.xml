@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-13T06:53:47.073Z</updated>
+  <updated>2018-11-13T07:27:38.299Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/11/13/koa/koa-virtual-host/"/>
     <id>http://yoursite.com/2018/11/13/koa/koa-virtual-host/</id>
     <published>2018-11-13T06:29:52.000Z</published>
-    <updated>2018-11-13T06:53:47.073Z</updated>
+    <updated>2018-11-13T07:27:38.299Z</updated>
     
-    <content type="html"><![CDATA[<p>该中间件是讲述如果在Koa上开启虚拟主机。</p><p>提供字符串，正则，数组及对象进行每个应用进行匹配。以及确保hostname的正确性。</p><p>会通过 <code>koa-compose</code> 来确保每个koa应用中间件的正确调用。</p><p>如果程序执行中出现错误，会报错。</p><p>起初还不理解使用，然后经过手动去执行应用，才恍然大悟。原来如此。</p><p>接着去看源代码，发现作者写的也是简单的，但这种思路需要我去学习。</p><p>至于如何正确使用这个模块，个人觉得当需要使用不同形式的相同ip，并且每个主机执行些不同中间件时可能会需要。</p>]]></content>
+    <content type="html"><![CDATA[<p>该中间件是讲述如果在Koa上开启虚拟主机。</p><p>提供字符串，正则，数组及对象进行每个应用进行匹配。以及确保hostname的正确性。并且支持http2。</p><p>会通过 <code>koa-compose</code> 来确保每个koa应用中间件的正确调用。</p><p>如果程序执行中出现错误，会报错。</p><p>起初还不理解使用，然后经过手动去执行应用，才恍然大悟。原来如此。</p><p>接着去看源代码，发现作者写的也是简单的，但这种思路需要我去学习。</p><p>至于如何正确使用这个模块，个人觉得当需要使用不同形式的相同ip，并且每个主机执行些不同中间件时可能会需要。</p>]]></content>
     
     <summary type="html">
     
@@ -32,7 +32,7 @@
         
         
           &lt;p&gt;该中间件是讲述如果在Koa上开启虚拟主机。&lt;/p&gt;
-&lt;p&gt;提供字符串，正则，数组及对象进行每个应用进行匹配。以及确保hostname的正确性。&lt;/p&gt;
+&lt;p&gt;提供字符串，正则，数组及对象进行每个应用进行匹配。以及确保hostname的正确性。并且支持http2。&lt;/p&gt;
 &lt;p&gt;会通过 &lt;code&gt;koa-compose&lt;/code&gt;
         
       
