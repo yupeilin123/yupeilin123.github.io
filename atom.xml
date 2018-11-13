@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-07T04:45:51.158Z</updated>
+  <updated>2018-11-13T06:53:47.073Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-Vhost：koa-virtual-host</title>
+    <link href="http://yoursite.com/2018/11/13/koa/koa-virtual-host/"/>
+    <id>http://yoursite.com/2018/11/13/koa/koa-virtual-host/</id>
+    <published>2018-11-13T06:29:52.000Z</published>
+    <updated>2018-11-13T06:53:47.073Z</updated>
+    
+    <content type="html"><![CDATA[<p>该中间件是讲述如果在Koa上开启虚拟主机。</p><p>提供字符串，正则，数组及对象进行每个应用进行匹配。以及确保hostname的正确性。</p><p>会通过 <code>koa-compose</code> 来确保每个koa应用中间件的正确调用。</p><p>如果程序执行中出现错误，会报错。</p><p>起初还不理解使用，然后经过手动去执行应用，才恍然大悟。原来如此。</p><p>接着去看源代码，发现作者写的也是简单的，但这种思路需要我去学习。</p><p>至于如何正确使用这个模块，个人觉得当需要使用不同形式的相同ip，并且每个主机执行些不同中间件时可能会需要。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;该中间件是讲述如果在Koa上开启虚拟主机。&lt;/p&gt;
+&lt;p&gt;提供字符串，正则，数组及对象进行每个应用进行匹配。以及确保hostname的正确性。&lt;/p&gt;
+&lt;p&gt;会通过 &lt;code&gt;koa-compose&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>每周npm模块源码解读：ms</title>
@@ -115,32 +145,6 @@
     
     
       <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每周npm模块源码解读：dateFormat</title>
-    <link href="http://yoursite.com/2018/10/31/npm/dateFormat/"/>
-    <id>http://yoursite.com/2018/10/31/npm/dateFormat/</id>
-    <published>2018-10-31T02:43:38.000Z</published>
-    <updated>2018-10-31T06:18:10.742Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>周2018.10.29 ~ 2018.11.4</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>anywhere</code></p><p>github: <a href="https://github.com/felixge/node-dateformat" target="_blank" rel="noopener">https://github.com/felixge/node-dateformat</a></p><p>描述：以相对较小的size提供了功能更完整的dataFormat</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>主要是通过字符串方法 <code>replace</code> 使用正则来替换字符最后返回值。</p><p>首先定义了三个正则用来替换字符。接着判断参数的类型是否正确。</p><p>然后通过传入的参数是否使用utc或者gmt。接着去定义转化字符的值。</p><p>并且还可以去定义短词字符串来快速执行日期转化以及本地化日名、月名和AM/PM等。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>没看过其他操作时间的类库，但这个类库的功能还是相对比较完善，最重要的是size很小。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;周2018.10.29 ~ 2018.11.4&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;anywhere&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;github: &lt;a href=&quot;https://github.com/felixge/node-dateformat&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/felixge/node-dateformat&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;描述：以相对较小的size提供了功能更完整的dataFormat&lt;/p&gt;
-&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
-    
-    
-      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
     
   </entry>
   
