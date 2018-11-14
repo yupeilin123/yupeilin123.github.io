@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-13T07:27:38.299Z</updated>
+  <updated>2018-11-14T06:31:23.736Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每周npm模块源码解读：@medv/prettyjson</title>
+    <link href="http://yoursite.com/2018/11/14/npm/prettyjson/"/>
+    <id>http://yoursite.com/2018/11/14/npm/prettyjson/</id>
+    <published>2018-11-14T06:04:00.000Z</published>
+    <updated>2018-11-14T06:31:23.736Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>周2018.11.12 ~ 2018.11.18</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>@medv/prettyjson</code></p><p>github: <a href="https://github.com/antonmedv/prettyjson" target="_blank" rel="noopener">https://github.com/antonmedv/prettyjson</a></p><p>描述：美化JSON格式</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>有两个参数可以输入，第一个是值 <code>v</code>，第二个是缩进的空格。用模块 <code>chalk</code> 输出不同的颜色的值。</p><p>首先判断 <code>v</code> 类型 ：</p><p><code>undefiend</code> ：如果是，返回 <code>void 0</code> ,实则是 <code>undefined</code> 。</p><p>值为 <code>null</code> ： 则返回值。</p><p><code>number</code> 并且使用 <code>Numebr.isFinite</code> 为true：则返回值。</p><p><code>boolean</code>： 如果是，返回值。</p><p><code>string</code>：需要对其进行 <code>JSON.stringify</code> 然后在返回。</p><p><code>array</code> ：使用了 <code>Generator</code> 函数，然后使用递归判断里面的值，并用模块 <code>indent-string</code> 缩进字符串。</p><p><code>object</code> ： 同 <code>array</code> 。</p><p>如果都不能满足以上情况，则使用 <code>JSON.stringify</code>。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>有以下知识点可以学习到：</p><p><code>void 0</code> 的意思，ES6中Number的新方法，<code>Generator</code> 函数的用法，递归。</p><p>推荐阅读： <a href="https://juejin.im/post/5be5b9f8518825512f58ba0e" target="_blank" rel="noopener">https://juejin.im/post/5be5b9f8518825512f58ba0e</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;周2018.11.12 ~ 2018.11.18&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;@medv/prettyjson&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/antonmedv/prettyjson&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/antonmedv/prettyjson&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：美化JSON格式&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
+    
+    
+      <category term="Npm" scheme="http://yoursite.com/tags/Npm/"/>
+    
+  </entry>
   
   <entry>
     <title>Koa系列-Vhost：koa-virtual-host</title>
@@ -113,31 +139,6 @@
 &lt;p&gt;具体的验证参数是模块 &lt;code&gt;joi&lt;/code&gt; 提供的。&lt;/p&gt;
 &lt;p&gt;第一个参数 &lt;code&gt;schema&lt;/code&gt; 是定义了需要验证的内容。如用post时，可以这么写，验证body中的username和age。&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;app.use(validator(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  body: object().keys(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    username: string().required(),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    age: number().required(),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列-Body Parsing：koa-bodyparser</title>
-    <link href="http://yoursite.com/2018/11/03/koa/koa-bodyparser/"/>
-    <id>http://yoursite.com/2018/11/03/koa/koa-bodyparser/</id>
-    <published>2018-11-03T06:48:54.000Z</published>
-    <updated>2018-11-05T05:45:03.110Z</updated>
-    
-    <content type="html"><![CDATA[<p>具体的body解析是基于模块 <code>co-body</code> ，而 <code>co-body</code> 是对模块 <code>raw-body</code> 更高级的封装。</p><p>首先是对配置项的操作，如自定义JSON检测函数 <code>detectJSON</code> ，自定义错误处理函数 <code>onerror</code> 等。</p><p>默认接受的请求类型是 <code>json</code> 和 <code>form</code> ，只有在能接受的类型下才可以执行下一步。</p><p>比较重要的一点是将选项 <code>returnRawBody</code> 默认为true且不能修改，是因为要返回的是解析后的值。</p><a id="more"></a><p>接着分别处理 <code>json</code> 、 <code>form</code> 和 <code>text</code> 的配置选项。然后与用户定义的 <code>extendTypes</code> 进行合并。</p><p>最后通过 <code>co-body</code> 进行处理。</p><p>该模块是对 <code>co-body</code> 进行封装以便在koa2中使用。在配置选项上比 <code>co-body</code> 的更加丰富。总体来说比较简单，但还是有疑问在。</p><p>为什么要对 <code>opts.detectJSON</code> ，<code>opts.onerror</code> 赋值给 <code>detectJSON</code> , <code>onerror</code> 之后重新赋值 <code>detectJSON</code> 。是因为后续对 <code>opts</code> 的操作不会不影响这两个函数吗？</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;具体的body解析是基于模块 &lt;code&gt;co-body&lt;/code&gt; ，而 &lt;code&gt;co-body&lt;/code&gt; 是对模块 &lt;code&gt;raw-body&lt;/code&gt; 更高级的封装。&lt;/p&gt;
-&lt;p&gt;首先是对配置项的操作，如自定义JSON检测函数 &lt;code&gt;detectJSON&lt;/code&gt; ，自定义错误处理函数 &lt;code&gt;onerror&lt;/code&gt; 等。&lt;/p&gt;
-&lt;p&gt;默认接受的请求类型是 &lt;code&gt;json&lt;/code&gt; 和 &lt;code&gt;form&lt;/code&gt; ，只有在能接受的类型下才可以执行下一步。&lt;/p&gt;
-&lt;p&gt;比较重要的一点是将选项 &lt;code&gt;returnRawBody&lt;/code&gt; 默认为true且不能修改，是因为要返回的是解析后的值。&lt;/p&gt;
     
     </summary>
     
