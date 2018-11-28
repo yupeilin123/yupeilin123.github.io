@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-14T06:31:23.736Z</updated>
+  <updated>2018-11-28T16:29:13.493Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每周npm模块源码解读：tz-format</title>
+    <link href="http://yoursite.com/2018/11/29/npm/tz-format/"/>
+    <id>http://yoursite.com/2018/11/29/npm/tz-format/</id>
+    <published>2018-11-28T16:14:13.000Z</published>
+    <updated>2018-11-28T16:29:13.493Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>补 周2018.11.19 ~ 2018.11.25</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>tz-format</code></p><p>github: <a href="https://github.com/samverschueren/tz-format" target="_blank" rel="noopener">https://github.com/samverschueren/tz-format</a></p><p>描述：提供一种UTC时间的转化方法</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>该使用方法提供两个参数，一个是日期 <code>date</code> ，另外一个是UTC时间的偏移量 <code>offset</code> 。</p><p>首先判断 <code>data</code> 和 <code>offset</code> 的数据类型。</p><p>接着用方法 <code>getOffset</code> 得到当前的UTC偏移量。</p><p>然后判断 <code>offset</code> ，去设置 <code>date</code> 的分钟，用 <code>setMinutes</code> 方法，该方法的参数超过了合理范围，会相应的更新日期时间中的时间信息。</p><p>最后返回当前时间。</p><p>并且有一个辅助函数 <code>pad</code> 在参数小与10时添加前置0。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>具体实现挺简单的，可以去看看。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;补 周2018.11.19 ~ 2018.11.25&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;tz-format&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/samverschueren/tz-format&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/samverschueren/tz-format&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：提供一种UTC时间的转化方法&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
+    
+    
+      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
+    
+  </entry>
   
   <entry>
     <title>每周npm模块源码解读：@medv/prettyjson</title>
@@ -114,31 +140,6 @@
 &lt;p&gt;&lt;code&gt;X-RateLimit-Remaining&lt;/code&gt; ：当前速率限制窗口中的剩余请求数。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;X-RateLimit-Reset&lt;/code&gt; ：当前速率限制窗口在UTC世界标准时中的重置时间。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;X-RateLimit-Limit&lt;/code&gt; ：允许用户每小时的最大请求数。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列-Parameter Validation：koa-context-validator</title>
-    <link href="http://yoursite.com/2018/11/05/koa/koa-context-validator/"/>
-    <id>http://yoursite.com/2018/11/05/koa/koa-context-validator/</id>
-    <published>2018-11-05T05:42:07.000Z</published>
-    <updated>2018-11-05T06:39:38.364Z</updated>
-    
-    <content type="html"><![CDATA[<p>Koa的该类型中间件数量并不是很多，并且没有几个符合要求，目前这个中间件 <code>koa-context-validator</code> 达到要求。</p><p>具体的验证参数是模块 <code>joi</code> 提供的。</p><p>第一个参数 <code>schema</code> 是定义了需要验证的内容。如用post时，可以这么写，验证body中的username和age。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.use(validator(&#123;</span><br><span class="line">  body: object().keys(&#123;</span><br><span class="line">    username: string().required(),</span><br><span class="line">    age: number().required(),</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure><a id="more"></a><p>第二个参数 <code>opts_</code> 则是 <code>joi.validate</code> 方法的参数 <code>options</code> 。</p><p>通过 <code>Object.assign</code> 将参数opts_重新复制到另一个变量opts上。然后将ctx和opts.context重新赋值到opts.context上。 </p><p>接着遍历schema，通过函数 <code>isContextOnlyKey</code> 判断是否有key等于 <code>params</code> ,决定需要验证的数据源是 <code>ctx</code> 或者 <code>ctx.request</code> 。</p><p>方法 <code>validate</code> 已经被模块 <code>thenify</code> promiseify了。所以在遍历中，验证每个schema，然后放入到数组中。待遍历结束，通过 <code>Promise.all</code> 来判断每个schema是否已经验证通过。</p><p>关于参数验证的规则，看了 <code>joi</code> 的api文档，所提供的api足够完成常规的参数验证的需求。但个人还是比较喜欢中间件 <code>koa-validate</code> 的用法，可惜该模块只能在Koa_v1中使用。</p><p>业界也有其他比较好的参数验证的模块，如 <code>parameter</code> 等。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Koa的该类型中间件数量并不是很多，并且没有几个符合要求，目前这个中间件 &lt;code&gt;koa-context-validator&lt;/code&gt; 达到要求。&lt;/p&gt;
-&lt;p&gt;具体的验证参数是模块 &lt;code&gt;joi&lt;/code&gt; 提供的。&lt;/p&gt;
-&lt;p&gt;第一个参数 &lt;code&gt;schema&lt;/code&gt; 是定义了需要验证的内容。如用post时，可以这么写，验证body中的username和age。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;app.use(validator(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  body: object().keys(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    username: string().required(),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    age: number().required(),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
