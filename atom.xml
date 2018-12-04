@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-28T16:29:13.493Z</updated>
+  <updated>2018-12-04T09:04:00.171Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每周npm模块源码解读：configstore</title>
+    <link href="http://yoursite.com/2018/12/04/npm/configstore/"/>
+    <id>http://yoursite.com/2018/12/04/npm/configstore/</id>
+    <published>2018-12-04T06:24:05.000Z</published>
+    <updated>2018-12-04T09:04:00.171Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>补周2018.11.26 ~ 2018.12.2</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>configstore</code></p><p>github: <a href="https://github.com/yeoman/configstore" target="_blank" rel="noopener">https://github.com/yeoman/configstore</a></p><p>描述：一个能读取和持久化配置的模块</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>类 <code>Configstore</code> 有三个参数 <code>packageName</code> , <code>defaults</code> 和 <code>options</code> 。</p><p><code>packageName</code> 表示记录该实例的一个标记。</p><p><code>defaults</code> 表示初始化默认的配置。</p><p><code>options</code> 表示一些选项配置。</p><p>首先得到存储路径，然后判断是否有 <code>defaults</code> 来初始化默认配置。</p><p>存储路径的判断是根据选项配置，如果定义了 <code>globalConfigPath</code> 为 true,则存储为 <code>packageName/config.json</code> ，否则为 <code>configstore/packageName.json</code> 。</p><p>最后根据 <code>option.configPath</code> 是否存在来判断是采用 <code>configPath</code> 还是默认的路径。</p><p>接着就是将类 <code>Configstore</code> 实例化，有一些实例方法。如set,get,has,delete,clear等方法。</p><p>这些方法主要用到了模块 <code>dot-prop</code> 用作数据操作。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>可以联想localStorage，sessionStorage的原理。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;补周2018.11.26 ~ 2018.12.2&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;configstore&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/yeoman/configstore&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/yeoman/configstore&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：一个能读取和持久化配置的模块&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
+    
+    
+      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
+    
+  </entry>
   
   <entry>
     <title>每周npm模块源码解读：tz-format</title>
@@ -121,32 +147,6 @@
     
     
       <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列-Rate Limiting：koa-ratelimit</title>
-    <link href="http://yoursite.com/2018/11/06/koa/koa-ratelimit/"/>
-    <id>http://yoursite.com/2018/11/06/koa/koa-ratelimit/</id>
-    <published>2018-11-06T05:51:07.000Z</published>
-    <updated>2018-11-07T03:19:54.964Z</updated>
-    
-    <content type="html"><![CDATA[<p>该中间件是用来控制api请求的速率限制，用于数据库 <code>redis</code> ，基于模块 <code>ratelimiter</code> 。</p><p>关于 <code>Rate Limits</code> 有三个响应头，分别是：</p><p><code>X-RateLimit-Remaining</code> ：当前速率限制窗口中的剩余请求数。</p><p><code>X-RateLimit-Reset</code> ：当前速率限制窗口在UTC世界标准时中的重置时间。</p><p><code>X-RateLimit-Limit</code> ：允许用户每小时的最大请求数。</p><a id="more"></a><p>有两个比较重要的配置选择， <code>id</code> 主要是用来区分用户，默认以用户ip作为区分，另外一个是 <code>db</code> ，是数据库 <code>redis</code> 的实例。</p><p>当实例 <code>ratelimiter</code> 并执行其方法时，会返回一个对象，包含四个属性 <code>total</code> ， <code>remaining</code> ， <code>reset</code> 和 <code>resetMs</code> 。</p><p>当 <code>remaining</code> 为0时，也就是剩余请求数为0时，响应头则添加 <code>Retry-After</code> ，并将状态码设置为429，并返回消息。</p><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><p><a href="https://www.fullcontact.com/developer/docs/rate-limits/" target="_blank" rel="noopener">https://www.fullcontact.com/developer/docs/rate-limits/</a><br><a href="https://developer.capsulecrm.com/v1/ratelimit/" target="_blank" rel="noopener">https://developer.capsulecrm.com/v1/ratelimit/</a><br><a href="https://blog.apisyouwonthate.com/what-is-api-rate-limiting-all-about-1819a390ab06" target="_blank" rel="noopener">https://blog.apisyouwonthate.com/what-is-api-rate-limiting-all-about-1819a390ab06</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;该中间件是用来控制api请求的速率限制，用于数据库 &lt;code&gt;redis&lt;/code&gt; ，基于模块 &lt;code&gt;ratelimiter&lt;/code&gt; 。&lt;/p&gt;
-&lt;p&gt;关于 &lt;code&gt;Rate Limits&lt;/code&gt; 有三个响应头，分别是：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;X-RateLimit-Remaining&lt;/code&gt; ：当前速率限制窗口中的剩余请求数。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;X-RateLimit-Reset&lt;/code&gt; ：当前速率限制窗口在UTC世界标准时中的重置时间。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;X-RateLimit-Limit&lt;/code&gt; ：允许用户每小时的最大请求数。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
     
   </entry>
   
