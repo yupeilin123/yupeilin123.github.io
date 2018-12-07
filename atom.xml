@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-04T09:04:00.171Z</updated>
+  <updated>2018-12-07T02:58:58.667Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每周npm模块源码解读：inherits</title>
+    <link href="http://yoursite.com/2018/12/06/npm/inherits/"/>
+    <id>http://yoursite.com/2018/12/06/npm/inherits/</id>
+    <published>2018-12-06T06:02:14.000Z</published>
+    <updated>2018-12-07T02:58:58.667Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>周2018.12.3 ~ 2018.12.9</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>inherits</code></p><p>github: <a href="https://github.com/isaacs/inherits" target="_blank" rel="noopener">https://github.com/isaacs/inherits</a></p><p>描述：一种适用于node和浏览器的继承方法</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>首先是 <code>require(&#39;util&#39;)</code> ,判断 <code>util.inherits</code> 是否为函数（判断是否在node环境），如果是，用此方法。</p><p>如果不是，throw错误，转而使用在浏览器中的继承方法。</p><p>一种是以 <code>Object.create</code> 实现继承（寄生组合式继承），另一种是判断 <code>Object.create</code> 不能使用时的垫片方法，实现 <code>Object.create</code> 的使用（寄生组合式继承）。</p><p><strong>js不同继承方式原理</strong></p><h6 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h6><p>利用原型让一个引用类型继承另一个引用类型的属性和方法</p><h6 id="借用构造函数"><a href="#借用构造函数" class="headerlink" title="借用构造函数"></a>借用构造函数</h6><p>在子类型构造函数的内部调用超类型构造函数</p><h6 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h6><p>使用原型链实现对原型属性和方法的继承，而通过借用构造函数来实现对实例属性的继承</p><h6 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h6><p>借助原型可以基于已有的对象创建新对象，同时还不必因此创建自定义类型</p><h6 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h6><p>创建一个仅用于封装继承过程的函数，该 函数在内部以某种方式来增强对象，最后再像真地是它做了所有工作一样返回对象</p><h6 id="寄生组合式继承"><a href="#寄生组合式继承" class="headerlink" title="寄生组合式继承"></a>寄生组合式继承</h6><p>不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型原型的一个副本而已。本质上，就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型 的原型</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>可以从中学习javascript的继承方式</p><h5 id="附-util-inherits-源码："><a href="#附-util-inherits-源码：" class="headerlink" title="附 util.inherits 源码："></a>附 <code>util.inherits</code> 源码：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function inherits(ctor, superCtor) &#123;</span><br><span class="line"></span><br><span class="line">  if (ctor === undefined || ctor === null)</span><br><span class="line">    throw new ERR_INVALID_ARG_TYPE(&apos;ctor&apos;, &apos;Function&apos;, ctor);</span><br><span class="line"></span><br><span class="line">  if (superCtor === undefined || superCtor === null)</span><br><span class="line">    throw new ERR_INVALID_ARG_TYPE(&apos;superCtor&apos;, &apos;Function&apos;, superCtor);</span><br><span class="line"></span><br><span class="line">  if (superCtor.prototype === undefined) &#123;</span><br><span class="line">    throw new ERR_INVALID_ARG_TYPE(&apos;superCtor.prototype&apos;,</span><br><span class="line">      &apos;Function&apos;, superCtor.prototype);</span><br><span class="line">  &#125;</span><br><span class="line">  Object.defineProperty(ctor, &apos;super_&apos;, &#123;</span><br><span class="line">    value: superCtor,</span><br><span class="line">    writable: true,</span><br><span class="line">    configurable: true</span><br><span class="line">  &#125;);</span><br><span class="line">  Object.setPrototypeOf(ctor.prototype, superCtor.prototype);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;周2018.12.3 ~ 2018.12.9&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;inherits&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/isaacs/inherits&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/isaacs/inherits&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：一种适用于node和浏览器的继承方法&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
+    
+    
+      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
+    
+  </entry>
   
   <entry>
     <title>每周npm模块源码解读：configstore</title>
@@ -121,32 +147,6 @@
     
     
       <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每周npm模块源码解读：ms</title>
-    <link href="http://yoursite.com/2018/11/07/npm/ms/"/>
-    <id>http://yoursite.com/2018/11/07/npm/ms/</id>
-    <published>2018-11-07T03:20:20.000Z</published>
-    <updated>2018-11-07T04:45:51.158Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>周2018.11.5 ~ 2018.11.11</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>ms</code></p><p>github: <a href="https://github.com/zeit/ms" target="_blank" rel="noopener">https://github.com/zeit/ms</a></p><p>描述：方便的转化将各种时间转化为毫秒，也可以将毫秒转化为其他时间</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>有两个参数，第一个是需要转化的值val，第二个是配置选项options。</p><p>首先判断val的类型，如果是字符串并且长度大于0，就执行函数 <code>parse</code>。如果是数字并且不是NaN，接着判断options.long是否为true，如果为true，就执行函数 <code>fmtLong</code> ，否则执行函数 <code>fmtShot</code>。</p><p>函数 <code>parse</code> ：用正则来匹配val出结果，然后通过 <code>switch case</code> ，返回最终毫秒数。</p><p>函数 <code>fmtShort</code> ：首先通过 <code>Math.abs</code> 返回val的绝对值，然后判断是大于天的毫秒数，还是大于小时的毫秒数等的判断，最终返回正确的值。</p><p>函数 <code>fmtLong</code> ：和函数 <code>fmtShort</code> 一样，区别于改变了后缀词以及判断是否为复数。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>学习到了，简单，但感觉看这个源码很舒服。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;周2018.11.5 ~ 2018.11.11&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;ms&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;github: &lt;a href=&quot;https://github.com/zeit/ms&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/zeit/ms&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;描述：方便的转化将各种时间转化为毫秒，也可以将毫秒转化为其他时间&lt;/p&gt;
-&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
-    
-    
-      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
     
   </entry>
   
