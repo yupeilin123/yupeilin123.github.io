@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-07T02:58:58.667Z</updated>
+  <updated>2018-12-10T15:31:32.852Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每周npm模块源码解读：get-port</title>
+    <link href="http://yoursite.com/2018/12/10/get-port/"/>
+    <id>http://yoursite.com/2018/12/10/get-port/</id>
+    <published>2018-12-10T15:11:15.000Z</published>
+    <updated>2018-12-10T15:31:32.852Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>周2018.12.10 ~ 2018.12.16</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>get-port</code></p><p>github: <a href="https://github.com/sindresorhus/get-port" target="_blank" rel="noopener">https://github.com/sindresorhus/get-port</a></p><p>描述：随即找到一个可用的端口或则检查端口是否可以使用</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>首先根据 <code>option</code> 来判断是判断端口是否可用还是随机得到一个可用的端口。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = options =&gt; options ?</span><br><span class="line">  getPort(options).catch(() =&gt; getPort(&#123;port: 0&#125;)) :</span><br><span class="line">  getPort(&#123;port: 0&#125;);</span><br></pre></td></tr></table></figure><p><code>options.port</code> 的类型得为数字或者数组，如果不是，也可以进行 <code>getPort({port: 0}))</code> 。</p><p>但会出现一个错误即是 <code>UnhandledPromiseRejectionWarning</code> 。</p><p>最后是通过函数<code>isAvailable</code> 来得到或者判断端口可否使用。</p><p>函数 <code>getPort</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const getPort = (options = &#123;&#125;) =&gt; new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  if (typeof options.port === &apos;number&apos;) &#123;</span><br><span class="line">    options.port = [options.port];</span><br><span class="line">  &#125;</span><br><span class="line">  &lt;!-- 操作端口号 --&gt;</span><br><span class="line">  options.port.reduce((seq, port) =&gt; &#123;</span><br><span class="line">    return seq.catch(() =&gt; &#123;</span><br><span class="line">      return isAvailable(Object.assign(&#123;&#125;, options, &#123;port&#125;))</span><br><span class="line">        .then(port =&gt; port)</span><br><span class="line">        .catch(Promise.reject.bind(Promise));</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;, Promise.reject()).then(resolve).catch(reject);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>学习了node模块net的使用。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;周2018.12.10 ~ 2018.12.16&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;get-port&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/sindresorhus/get-port&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/sindresorhus/get-port&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：随即找到一个可用的端口或则检查端口是否可以使用&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
+    
+    
+      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
+    
+  </entry>
   
   <entry>
     <title>每周npm模块源码解读：inherits</title>
@@ -117,36 +143,6 @@
     
     
       <category term="Npm" scheme="http://yoursite.com/tags/Npm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列-Vhost：koa-virtual-host</title>
-    <link href="http://yoursite.com/2018/11/13/koa/koa-virtual-host/"/>
-    <id>http://yoursite.com/2018/11/13/koa/koa-virtual-host/</id>
-    <published>2018-11-13T06:29:52.000Z</published>
-    <updated>2018-11-13T07:27:38.299Z</updated>
-    
-    <content type="html"><![CDATA[<p>该中间件是讲述如果在Koa上开启虚拟主机。</p><p>提供字符串，正则，数组及对象进行每个应用进行匹配。以及确保hostname的正确性。并且支持http2。</p><p>会通过 <code>koa-compose</code> 来确保每个koa应用中间件的正确调用。</p><p>如果程序执行中出现错误，会报错。</p><p>起初还不理解使用，然后经过手动去执行应用，才恍然大悟。原来如此。</p><p>接着去看源代码，发现作者写的也是简单的，但这种思路需要我去学习。</p><p>至于如何正确使用这个模块，个人觉得当需要使用不同形式的相同ip，并且每个主机执行些不同中间件时可能会需要。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;该中间件是讲述如果在Koa上开启虚拟主机。&lt;/p&gt;
-&lt;p&gt;提供字符串，正则，数组及对象进行每个应用进行匹配。以及确保hostname的正确性。并且支持http2。&lt;/p&gt;
-&lt;p&gt;会通过 &lt;code&gt;koa-compose&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
     
   </entry>
   
