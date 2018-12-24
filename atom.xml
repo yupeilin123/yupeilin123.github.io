@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-22T08:34:51.500Z</updated>
+  <updated>2018-12-24T13:37:29.749Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Koa系列-File Serving：koa-send</title>
+    <link href="http://yoursite.com/2018/12/24/koa/koa-send/"/>
+    <id>http://yoursite.com/2018/12/24/koa/koa-send/</id>
+    <published>2018-12-24T01:59:35.000Z</published>
+    <updated>2018-12-24T13:37:29.749Z</updated>
+    
+    <content type="html"><![CDATA[<p>一个例子，具体的用法可以看文档：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="keyword">async</span> (ctx) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> send(ctx, ctx.path, &#123; <span class="attr">root</span>: __dirname + <span class="string">'/public'</span> &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>选项中的 <code>root</code> 表示以哪个文件夹作为静态资源文件夹，若不传则以当前文件夹为静态资源文件夹。</p><p>函数 <code>decode</code> 用于解码由 <code>encodeURIComponent</code> 方法或者其它类似方法编码的部分统一资源标识符（URI）。</p><p>选项中的 <code>hidden</code> 来隐藏 <code>.xx</code> 格式的文件，避免显示它们。</p><p><code>gizp</code> , <code>brotli</code> 以及 <code>extensions</code> 用来传输特殊压缩格式的文件。</p><p>接着去判断该请求路径的文件，是否存在。存在的话，并且 <code>options.index</code> 是存在，则自动打开该文件。</p><p>并且可以去设置响应头，但 <code>setHeaders</code> 一定得为函数。</p><p>最后用流的方式传输文件。</p><p>在其中可以去设置响应头 <code>Last-Modified</code> 和 <code>Cache-Control</code>。</p><p>总体来说，继续学习吧。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;一个例子，具体的用法可以看文档：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
+  
+  <entry>
     <title>每周npm模块源码解读：delegates</title>
-    <link href="http://yoursite.com/2018/12/22/delegates/"/>
-    <id>http://yoursite.com/2018/12/22/delegates/</id>
+    <link href="http://yoursite.com/2018/12/22/npm/delegates/"/>
+    <id>http://yoursite.com/2018/12/22/npm/delegates/</id>
     <published>2018-12-22T08:11:05.000Z</published>
-    <updated>2018-12-22T08:34:51.500Z</updated>
+    <updated>2018-12-24T01:58:53.618Z</updated>
     
     <content type="html"><![CDATA[<p><strong>周2018.12.17 ~ 2018.12.23</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>delegates</code></p><p>github: <a href="https://github.com/tj/node-delegates" target="_blank" rel="noopener">https://github.com/tj/node-delegates</a></p><p>描述：方法和访问器委托的工具</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>用函数的形式调用，实则是用 <code>new</code> 来实例。</p><p><code>Delegate(proto, target)</code> ：实例构造函数 <code>Delegator</code> 。</p><p><code>Delegate.auto(proto, targetProto, targetProp)</code> ：实例构造函数 <code>Delegator</code> ,然后使用 <code>Object.getOwnPropertyNames</code> 来得到 <code>targetProto</code> 的自身属性的属性名（包括不可枚举但不包括Symbol值作为名称的属性）。将通过 <code>Object.getOwnPropertyDescriptor</code> 得到 <code>taegetProto</code> 的每个属性的描述符，接着是数据描述符还是存取描述符，进行相应的操作。</p><p><code>Delegate#method(name)</code> ：将 <code>target</code> 的此方法挂载到 <code>proto</code> 上。</p><p><code>Delegate#getter(name)</code> ：使用 <code>__defineGetter__</code> 将属性挂载到 <code>proto</code> 上。使用 <code>Object.defineProperty</code></p><p><code>Delegate#setter(name)</code> ：使用 <code>__defineSetter__</code> 将属性挂载到 <code>proto</code> 上。</p><p><code>Delegate#access(name)</code> ：连着使用 <code>getter</code> 和 <code>setter</code>。</p><p><code>Delegate#fluent(name)</code> ：判断调用时，参数是否是 <code>undefined</code> ,是则返回该属性对应值，不是则去设置该属性的值。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>学习了，学习了，结合 <code>koa</code> 的 <code>context</code> 可以更加了解。</p>]]></content>
     
@@ -112,32 +141,6 @@
 &lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;inherits&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;github: &lt;a href=&quot;https://github.com/isaacs/inherits&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/isaacs/inherits&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;描述：一种适用于node和浏览器的继承方法&lt;/p&gt;
-&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
-    
-    
-      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每周npm模块源码解读：configstore</title>
-    <link href="http://yoursite.com/2018/12/04/npm/configstore/"/>
-    <id>http://yoursite.com/2018/12/04/npm/configstore/</id>
-    <published>2018-12-04T06:24:05.000Z</published>
-    <updated>2018-12-04T09:04:00.171Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>补周2018.11.26 ~ 2018.12.2</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>configstore</code></p><p>github: <a href="https://github.com/yeoman/configstore" target="_blank" rel="noopener">https://github.com/yeoman/configstore</a></p><p>描述：一个能读取和持久化配置的模块</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>类 <code>Configstore</code> 有三个参数 <code>packageName</code> , <code>defaults</code> 和 <code>options</code> 。</p><p><code>packageName</code> 表示记录该实例的一个标记。</p><p><code>defaults</code> 表示初始化默认的配置。</p><p><code>options</code> 表示一些选项配置。</p><p>首先得到存储路径，然后判断是否有 <code>defaults</code> 来初始化默认配置。</p><p>存储路径的判断是根据选项配置，如果定义了 <code>globalConfigPath</code> 为 true,则存储为 <code>packageName/config.json</code> ，否则为 <code>configstore/packageName.json</code> 。</p><p>最后根据 <code>option.configPath</code> 是否存在来判断是采用 <code>configPath</code> 还是默认的路径。</p><p>接着就是将类 <code>Configstore</code> 实例化，有一些实例方法。如set,get,has,delete,clear等方法。</p><p>这些方法主要用到了模块 <code>dot-prop</code> 用作数据操作。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>可以联想localStorage，sessionStorage的原理。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;补周2018.11.26 ~ 2018.12.2&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;configstore&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;github: &lt;a href=&quot;https://github.com/yeoman/configstore&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/yeoman/configstore&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;描述：一个能读取和持久化配置的模块&lt;/p&gt;
 &lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
     
     </summary>
