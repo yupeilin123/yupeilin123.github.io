@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-24T14:15:13.206Z</updated>
+  <updated>2018-12-26T08:14:20.696Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-SPDY：koa-file-server</title>
+    <link href="http://yoursite.com/2018/12/26/koa-file-server/"/>
+    <id>http://yoursite.com/2018/12/26/koa-file-server/</id>
+    <published>2018-12-26T07:50:45.000Z</published>
+    <updated>2018-12-26T08:14:20.696Z</updated>
+    
+    <content type="html"><![CDATA[<p>这个中间件已经不再维护。</p><p>这个中间件使用了SPDY，但现在已经被HTTP2取代了。</p><p>源代码还是挺好理解的。大致说一下。</p><p>通过将文件的信息存储到内存中。当再次请求就可以判断内存是否存在此请求时存在的文件，否则则去设置文件的信息。</p><p>在设置文件的信息中，通过管道流的方式将文件转化为一个gizp的文件。</p><p>并且用到了 <code>SPDY</code> 的高级特征：服务器启动流。服务器启动流能用来分发内容到客户端，而不需要客户端发起请求。主要由模块 <code>spdy-push</code> 实现。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这个中间件已经不再维护。&lt;/p&gt;
+&lt;p&gt;这个中间件使用了SPDY，但现在已经被HTTP2取代了。&lt;/p&gt;
+&lt;p&gt;源代码还是挺好理解的。大致说一下。&lt;/p&gt;
+&lt;p&gt;通过将文件的信息存储到内存中。当再次请求就可以判断内存是否存在此请求时存在的文件，否则则去设置文件的信息。&lt;/p
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>浮生闲读</title>
@@ -122,35 +153,6 @@
     
     
       <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列-Documentation：koa-joi-swagger</title>
-    <link href="http://yoursite.com/2018/12/14/koa/koa-joi-swagger/"/>
-    <id>http://yoursite.com/2018/12/14/koa/koa-joi-swagger/</id>
-    <published>2018-12-14T03:18:51.000Z</published>
-    <updated>2018-12-14T03:46:40.564Z</updated>
-    
-    <content type="html"><![CDATA[<p>这个中间件主要是用来搭建 api 文档管理的网站，用到了 <code>swagger-ui</code> 作为页面 UI， <code>joi</code> 用做管理 js 对象的验证器。</p><p>首先是用 <code>joi.extend</code> 扩展了对象，字符和数字新的 joi 实例。</p><p>然后选择是用 v3 还是 v2 的 <code>swagger-ui</code> ，得到最终渲染的模板 html。</p><p>最后对描述 api 的内容进行转化，生成验证规则，得到最终的 api 文档管理。</p><p>这个中间件挺老了，并且用法也不太方便，而且现在市面上也出现了挺多优秀的 api 文档管理系统。</p><p>所以就大概就了解其实现思路。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;这个中间件主要是用来搭建 api 文档管理的网站，用到了 &lt;code&gt;swagger-ui&lt;/code&gt; 作为页面 UI， &lt;code&gt;joi&lt;/code&gt; 用做管理 js 对象的验证器。&lt;/p&gt;
-&lt;p&gt;首先是用 &lt;code&gt;joi.extend&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
     
   </entry>
   
