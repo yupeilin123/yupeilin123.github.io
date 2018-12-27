@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-26T08:14:20.696Z</updated>
+  <updated>2018-12-27T15:00:43.100Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>每周npm模块源码解读：mz</title>
+    <link href="http://yoursite.com/2018/12/27/npm/mz/"/>
+    <id>http://yoursite.com/2018/12/27/npm/mz/</id>
+    <published>2018-12-27T14:43:13.000Z</published>
+    <updated>2018-12-27T15:00:43.100Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>周2018.12.24 ~ 2018.12.30</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>mz</code></p><p>github: <a href="https://github.com/normalize/mz" target="_blank" rel="noopener">https://github.com/normalize/mz</a></p><p>描述：将node.js的某些模块promisify化</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><pre><code>现在的node最新稳定版本10.15.0，已经提供了把node模块promisify的函数了。</code></pre><p>将 <code>fs</code>, <code>dns</code>, <code>zlib</code>, <code>crypto</code>, <code>readline</code>, <code>child_process</code> 这些模块的方法promisify化。</p><p>主要是借助 <code>thenify-all</code> 和 <code>any-promise</code> 的帮助。</p><p>有两点需要注意的：</p><p>一个是模块 <code>fs</code> ，重写了 <code>fs.exits</code>。但该方法已经废弃了。该方法实则使用是调用 <code>fs.stat</code>。</p><p>另外一个是模块 <code>readline</code> ，重写了 <code>readline.Interface</code>。兼容以前的版本？覆盖 <code>question</code> ，在这边使用了 <code>promise</code>。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>在那个年代，把常用的node模块promisfy还是很有用的。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;周2018.12.24 ~ 2018.12.30&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;mz&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&quot;https://github.com/normalize/mz&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/normalize/mz&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;描述：将node.js的某些模块promisify化&lt;/p&gt;
+&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
+    
+    
+      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Koa系列-SPDY：koa-file-server</title>
-    <link href="http://yoursite.com/2018/12/26/koa-file-server/"/>
-    <id>http://yoursite.com/2018/12/26/koa-file-server/</id>
+    <link href="http://yoursite.com/2018/12/26/koa/koa-file-server/"/>
+    <id>http://yoursite.com/2018/12/26/koa/koa-file-server/</id>
     <published>2018-12-26T07:50:45.000Z</published>
-    <updated>2018-12-26T08:14:20.696Z</updated>
+    <updated>2018-12-27T14:43:37.989Z</updated>
     
     <content type="html"><![CDATA[<p>这个中间件已经不再维护。</p><p>这个中间件使用了SPDY，但现在已经被HTTP2取代了。</p><p>源代码还是挺好理解的。大致说一下。</p><p>通过将文件的信息存储到内存中。当再次请求就可以判断内存是否存在此请求时存在的文件，否则则去设置文件的信息。</p><p>在设置文件的信息中，通过管道流的方式将文件转化为一个gizp的文件。</p><p>并且用到了 <code>SPDY</code> 的高级特征：服务器启动流。服务器启动流能用来分发内容到客户端，而不需要客户端发起请求。主要由模块 <code>spdy-push</code> 实现。</p>]]></content>
     
@@ -127,32 +153,6 @@
     
     
       <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每周npm模块源码解读：delegates</title>
-    <link href="http://yoursite.com/2018/12/22/npm/delegates/"/>
-    <id>http://yoursite.com/2018/12/22/npm/delegates/</id>
-    <published>2018-12-22T08:11:05.000Z</published>
-    <updated>2018-12-24T01:58:53.618Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>周2018.12.17 ~ 2018.12.23</strong></p><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>模块名：<code>delegates</code></p><p>github: <a href="https://github.com/tj/node-delegates" target="_blank" rel="noopener">https://github.com/tj/node-delegates</a></p><p>描述：方法和访问器委托的工具</p><p>适合人群：至少看过一遍源码</p><a id="more"></a><h5 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h5><p>用函数的形式调用，实则是用 <code>new</code> 来实例。</p><p><code>Delegate(proto, target)</code> ：实例构造函数 <code>Delegator</code> 。</p><p><code>Delegate.auto(proto, targetProto, targetProp)</code> ：实例构造函数 <code>Delegator</code> ,然后使用 <code>Object.getOwnPropertyNames</code> 来得到 <code>targetProto</code> 的自身属性的属性名（包括不可枚举但不包括Symbol值作为名称的属性）。将通过 <code>Object.getOwnPropertyDescriptor</code> 得到 <code>taegetProto</code> 的每个属性的描述符，接着是数据描述符还是存取描述符，进行相应的操作。</p><p><code>Delegate#method(name)</code> ：将 <code>target</code> 的此方法挂载到 <code>proto</code> 上。</p><p><code>Delegate#getter(name)</code> ：使用 <code>__defineGetter__</code> 将属性挂载到 <code>proto</code> 上。使用 <code>Object.defineProperty</code></p><p><code>Delegate#setter(name)</code> ：使用 <code>__defineSetter__</code> 将属性挂载到 <code>proto</code> 上。</p><p><code>Delegate#access(name)</code> ：连着使用 <code>getter</code> 和 <code>setter</code>。</p><p><code>Delegate#fluent(name)</code> ：判断调用时，参数是否是 <code>undefined</code> ,是则返回该属性对应值，不是则去设置该属性的值。</p><h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>学习了，学习了，结合 <code>koa</code> 的 <code>context</code> 可以更加了解。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;周2018.12.17 ~ 2018.12.23&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;模块名：&lt;code&gt;delegates&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;github: &lt;a href=&quot;https://github.com/tj/node-delegates&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/tj/node-delegates&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;描述：方法和访问器委托的工具&lt;/p&gt;
-&lt;p&gt;适合人群：至少看过一遍源码&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
-    
-    
-      <category term="NPM" scheme="http://yoursite.com/tags/NPM/"/>
     
   </entry>
   
