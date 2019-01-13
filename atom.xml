@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-27T15:00:43.100Z</updated>
+  <updated>2019-01-13T14:02:27.769Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-HTTP2：koa-server-push</title>
+    <link href="http://yoursite.com/2019/01/13/koa/koa-server-push/"/>
+    <id>http://yoursite.com/2019/01/13/koa/koa-server-push/</id>
+    <published>2019-01-13T13:35:40.000Z</published>
+    <updated>2019-01-13T14:02:27.769Z</updated>
+    
+    <content type="html"><![CDATA[<p>在使用http2协议的情况下，开启server push之后，server通过X-Associated-Content header（X-开头的header都属于非标准的，自定义header）告知客户端会有新的内容推送过来。在用户第一次打开网站首页的时候，server将资源主动推送过来可以极大的提升用户体验。</p><p>该模板通过默认的文件名去读取内容，或者是设置读取内容的文件名。</p><p>通过设置http head的Link，添加代理。</p><p>参考：<a href="https://github.com/amandakelake/blog/issues/35" target="_blank" rel="noopener">http2的前生今世</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在使用http2协议的情况下，开启server push之后，server通过X-Associated-Content
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>每周npm模块源码解读：mz</title>
@@ -124,35 +152,6 @@
     
     
       <category term="书" scheme="http://yoursite.com/tags/%E4%B9%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列-File Serving：koa-send</title>
-    <link href="http://yoursite.com/2018/12/24/koa/koa-send/"/>
-    <id>http://yoursite.com/2018/12/24/koa/koa-send/</id>
-    <published>2018-12-24T01:59:35.000Z</published>
-    <updated>2018-12-24T13:37:29.749Z</updated>
-    
-    <content type="html"><![CDATA[<p>一个例子，具体的用法可以看文档：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="keyword">async</span> (ctx) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> send(ctx, ctx.path, &#123; <span class="attr">root</span>: __dirname + <span class="string">'/public'</span> &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>选项中的 <code>root</code> 表示以哪个文件夹作为静态资源文件夹，若不传则以当前文件夹为静态资源文件夹。</p><p>函数 <code>decode</code> 用于解码由 <code>encodeURIComponent</code> 方法或者其它类似方法编码的部分统一资源标识符（URI）。</p><p>选项中的 <code>hidden</code> 来隐藏 <code>.xx</code> 格式的文件，避免显示它们。</p><p><code>gizp</code> , <code>brotli</code> 以及 <code>extensions</code> 用来传输特殊压缩格式的文件。</p><p>接着去判断该请求路径的文件，是否存在。存在的话，并且 <code>options.index</code> 是存在，则自动打开该文件。</p><p>并且可以去设置响应头，但 <code>setHeaders</code> 一定得为函数。</p><p>最后用流的方式传输文件。</p><p>在其中可以去设置响应头 <code>Last-Modified</code> 和 <code>Cache-Control</code>。</p><p>总体来说，继续学习吧。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;一个例子，具体的用法可以看文档：&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
     
   </entry>
   
