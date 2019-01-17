@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-13T14:02:27.769Z</updated>
+  <updated>2019-01-17T03:34:27.294Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-JSON and JSONP Responses：koa-response-jsop</title>
+    <link href="http://yoursite.com/2019/01/17/koa/koa-response-jsop/"/>
+    <id>http://yoursite.com/2019/01/17/koa/koa-response-jsop/</id>
+    <published>2019-01-17T03:21:55.000Z</published>
+    <updated>2019-01-17T03:34:27.294Z</updated>
+    
+    <content type="html"><![CDATA[<p>这个库的具体实现是将koa实例传入函数jsonp，在contenxt上挂载一个新函数jsonp，来达到效果。</p><p>参考：<a href="https://segmentfault.com/a/1190000009742074" target="_blank" rel="noopener">jsonp原理</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这个库的具体实现是将koa实例传入函数jsonp，在contenxt上挂载一个新函数jsonp，来达到效果。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://segmentfault.com/a/1190000009742074&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>Koa系列-HTTP2：koa-server-push</title>
@@ -115,36 +144,6 @@
       &lt;p&gt;&lt;strong&gt;2018.12.14 ~ 2018.12.21&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;无人生还&lt;/strong&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;整个故事讲的的是十个来历不同互不相识的人受邀来到一座海岛发生的一系列事情，岛的名字叫做士兵岛。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;从最开始的马尔斯顿的死亡，到罗杰斯太太的死亡，让我以为这座岛上还存在第十一人。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;到之中的，法官沃格雷夫和他们一起分析，可能凶手来自他们中的一个。在这之前我就这么认为了。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;但是直到最后还是不知道谁是凶手，因为人都死亡了，迎合了开头的一首十个小士兵的童谣。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;看到最后才知道，法官劳伦斯·约翰·沃格雷夫，才是欧文先生。知道了整个故事的前因后果。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;确实是刺激~~&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="书" scheme="http://yoursite.com/tags/%E4%B9%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记录我看过的书</title>
-    <link href="http://yoursite.com/2018/12/24/book/%E8%AE%B0%E5%BD%95%E6%88%91%E7%9C%8B%E8%BF%87%E7%9A%84%E4%B9%A6/"/>
-    <id>http://yoursite.com/2018/12/24/book/记录我看过的书/</id>
-    <published>2018-12-24T13:38:32.000Z</published>
-    <updated>2018-12-24T13:49:39.759Z</updated>
-    
-    <content type="html"><![CDATA[<p>一直以来都挺喜欢看书的，从小学开始看四大名著起，妖魔鬼怪，武侠小说，再之后的长达10年之久的网络小说。</p><p>初中的时候在镇上的图书馆办过借书证，在高中办过市里的借书证，借过几次看过几次，但之后的不再继续，甚至到现在，市里的借书证还在。</p><p>到了大学，接着看书，印象比较深，看了很多本，甚至迷上了哲学。</p><p>现在，仅想记录一下自己的现在开始的读书。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;一直以来都挺喜欢看书的，从小学开始看四大名著起，妖魔鬼怪，武侠小说，再之后的长达10年之久的网络小说。&lt;/p&gt;
-&lt;p&gt;初中的时候在镇上的图书馆办过借书证，在高中办过市里的借书证，借过几次看过几次，但之后的不再继续，甚至到现在，市里的借书证还在。&lt;/p&gt;
-&lt;p&gt;到了大学，接着
-        
-      
     
     </summary>
     
