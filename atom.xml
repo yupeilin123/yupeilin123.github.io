@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-17T03:34:27.294Z</updated>
+  <updated>2019-01-18T03:33:29.776Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-Compression：koa-compress</title>
+    <link href="http://yoursite.com/2019/01/18/koa-compress/"/>
+    <id>http://yoursite.com/2019/01/18/koa-compress/</id>
+    <published>2019-01-18T03:18:29.000Z</published>
+    <updated>2019-01-18T03:33:29.776Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用该库进行压缩，有以下几个条件，若哪一条不能通过，则不需要进行压缩。</p><p>1.必须得有 <code>body</code><br>2.响应头是否已经发送或者响应是否已经结束<br>3.是否设置了 <code>compress = false</code><br>4.请求方法不能是 <code>HEAD</code><br>5.判断状态码是否不能包含消息体<br>6.响应头是否已经存在 <code>Content-Encoding</code><br>7.筛选响应体的类型<br>8.是否可以设置 <code>acceptsEncodings(&#39;gzip&#39;,&#39;deflate&#39;,&#39;identity&#39;)</code><br>9.内容编码为 <code>identity</code><br>10.响应内容大小是否小与设置值</p><p>最后即使用 <code>gzip</code> or <code>defalte</code> 进行压缩传输。</p><p>参考：<a href="https://blog.csdn.net/u014569188/article/details/78912446" target="_blank" rel="noopener">http协议中的Content-Encoding</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;使用该库进行压缩，有以下几个条件，若哪一条不能通过，则不需要进行压缩。&lt;/p&gt;
+&lt;p&gt;1.必须得有 &lt;code&gt;body&lt;/code&gt;&lt;br&gt;2.响应头是否已经发送或者响应是否已经结束&lt;br&gt;3.是否设置了 &lt;code&gt;compress =
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>Koa系列-JSON and JSONP Responses：koa-response-jsop</title>
@@ -127,30 +156,6 @@
     
     
       <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浮生闲读</title>
-    <link href="http://yoursite.com/2018/12/24/book/%E6%B5%AE%E7%94%9F%E9%97%B2%E8%AF%BB/"/>
-    <id>http://yoursite.com/2018/12/24/book/浮生闲读/</id>
-    <published>2018-12-24T13:51:14.000Z</published>
-    <updated>2018-12-24T14:15:13.206Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>2018.12.14 ~ 2018.12.21</strong></p><p><strong>无人生还</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">整个故事讲的的是十个来历不同互不相识的人受邀来到一座海岛发生的一系列事情，岛的名字叫做士兵岛。</span><br><span class="line">从最开始的马尔斯顿的死亡，到罗杰斯太太的死亡，让我以为这座岛上还存在第十一人。</span><br><span class="line">到之中的，法官沃格雷夫和他们一起分析，可能凶手来自他们中的一个。在这之前我就这么认为了。</span><br><span class="line">但是直到最后还是不知道谁是凶手，因为人都死亡了，迎合了开头的一首十个小士兵的童谣。</span><br><span class="line">看到最后才知道，法官劳伦斯·约翰·沃格雷夫，才是欧文先生。知道了整个故事的前因后果。</span><br><span class="line">确实是刺激~~</span><br></pre></td></tr></table></figure><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;2018.12.14 ~ 2018.12.21&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;无人生还&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;整个故事讲的的是十个来历不同互不相识的人受邀来到一座海岛发生的一系列事情，岛的名字叫做士兵岛。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;从最开始的马尔斯顿的死亡，到罗杰斯太太的死亡，让我以为这座岛上还存在第十一人。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;到之中的，法官沃格雷夫和他们一起分析，可能凶手来自他们中的一个。在这之前我就这么认为了。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;但是直到最后还是不知道谁是凶手，因为人都死亡了，迎合了开头的一首十个小士兵的童谣。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;看到最后才知道，法官劳伦斯·约翰·沃格雷夫，才是欧文先生。知道了整个故事的前因后果。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;确实是刺激~~&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="书" scheme="http://yoursite.com/tags/%E4%B9%A6/"/>
     
   </entry>
   
