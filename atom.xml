@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-20T07:25:34.081Z</updated>
+  <updated>2019-01-20T08:17:45.303Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,16 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>koa-etag</title>
+    <title>Koa系列-Caching：koa-etag</title>
     <link href="http://yoursite.com/2019/01/20/koa-etag/"/>
     <id>http://yoursite.com/2019/01/20/koa-etag/</id>
     <published>2019-01-20T07:25:34.000Z</published>
-    <updated>2019-01-20T07:25:34.081Z</updated>
+    <updated>2019-01-20T08:17:45.303Z</updated>
+    
+    <content type="html"><![CDATA[<p>有以下几种情况不能使用 <code>etag</code>：</p><p>1.没有响应实体<br>2.已设置了 <code>etag</code><br>3.http状态码不是 <code>2xx</code><br>4.响应实体是 <code>stream</code> 类型，没有具体路径也不行</p><p>最后是使用了包 <code>etag</code> 生成具体的 <code>etag</code></p><p>参考: <a href="https://www.cnblogs.com/etoah/p/5579622.html" target="_blank" rel="noopener">浏览器缓存</a></p>]]></content>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;p&gt;有以下几种情况不能使用 &lt;code&gt;etag&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;1.没有响应实体&lt;br&gt;2.已设置了 &lt;code&gt;etag&lt;/code&gt;&lt;br&gt;3.http状态码不是 &lt;code&gt;2xx&lt;/code&gt;&lt;br&gt;4.响应实体是
+        
+      
+    
     </summary>
     
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
     
   </entry>
   
