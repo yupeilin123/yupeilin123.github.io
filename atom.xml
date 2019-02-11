@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-30T03:02:27.963Z</updated>
+  <updated>2019-02-11T07:14:18.595Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-Templating：koa-views</title>
+    <link href="http://yoursite.com/2019/02/11/koa-views/"/>
+    <id>http://yoursite.com/2019/02/11/koa-views/</id>
+    <published>2019-02-11T06:54:06.000Z</published>
+    <updated>2019-02-11T07:14:18.595Z</updated>
+    
+    <content type="html"><![CDATA[<p>这个中间件用于模板渲染，以包 <code>consolidate</code> 为默认的渲染引擎集合包，支持多种不同模板引擎。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数设置以及视图的地址，必须使用绝对地址</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">viewsMiddleware</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  path,</span></span></span><br><span class="line"><span class="function"><span class="params">  &#123; engineSource = consolidate, extension = <span class="string">'html'</span>, options = &#123;&#125;, map &#125; = &#123;&#125; </span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">views</span>(<span class="params">ctx,next</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 判断是否存在render函数，有则跳过后续代码</span></span><br><span class="line">    <span class="keyword">if</span>(ctx.render) <span class="keyword">return</span> next()</span><br><span class="line">    ctx.response.render = ctx.render = <span class="function"><span class="keyword">function</span>(<span class="params">relaPath,locals = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 包get-paths用来得到模板引擎视图的绝对路径</span></span><br><span class="line">      <span class="keyword">return</span> getPaths(path, relaPath, extension).then(<span class="function"><span class="params">paths</span> =&gt;</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>之后就来决定是使用 <code>send</code> 返回默认 <code>.html</code> 文件还是需要使用模板引擎。</p><p>有个小细节就是，是否需要美化代码，是通过 <code>locals.pretty</code> 判断。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这个中间件用于模板渲染，以包 &lt;code&gt;consolidate&lt;/code&gt; 为默认的渲染引擎集合包，支持多种不同模板引擎。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>Koa系列-Services：koa-orm</title>
@@ -120,34 +149,6 @@
         
           &lt;p&gt;这个库的具体实现是将koa实例传入函数jsonp，在contenxt上挂载一个新函数jsonp，来达到效果。&lt;/p&gt;
 &lt;p&gt;参考：&lt;a href=&quot;https://segmentfault.com/a/1190000009742074&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列-HTTP2：koa-server-push</title>
-    <link href="http://yoursite.com/2019/01/13/koa/koa-server-push/"/>
-    <id>http://yoursite.com/2019/01/13/koa/koa-server-push/</id>
-    <published>2019-01-13T13:35:40.000Z</published>
-    <updated>2019-01-13T14:02:27.769Z</updated>
-    
-    <content type="html"><![CDATA[<p>在使用http2协议的情况下，开启server push之后，server通过X-Associated-Content header（X-开头的header都属于非标准的，自定义header）告知客户端会有新的内容推送过来。在用户第一次打开网站首页的时候，server将资源主动推送过来可以极大的提升用户体验。</p><p>该模板通过默认的文件名去读取内容，或者是设置读取内容的文件名。</p><p>通过设置http head的Link，添加代理。</p><p>参考：<a href="https://github.com/amandakelake/blog/issues/35" target="_blank" rel="noopener">http2的前生今世</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在使用http2协议的情况下，开启server push之后，server通过X-Associated-Content
         
       
     
