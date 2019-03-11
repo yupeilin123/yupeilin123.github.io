@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-11T02:12:40.140Z</updated>
+  <updated>2019-03-11T09:51:06.560Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列CSS Preprocessor：koa-sass</title>
+    <link href="http://yoursite.com/2019/03/11/koa/koa-sass/"/>
+    <id>http://yoursite.com/2019/03/11/koa/koa-sass/</id>
+    <published>2019-03-11T09:39:21.000Z</published>
+    <updated>2019-03-11T09:51:06.560Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">&#123; mountAt, src, dest, importPaths = [] &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 判断mountAt后缀是否为'/' ，若是则去掉</span></span><br><span class="line">  mountAt = mountAt.substr(<span class="number">-1</span>) === <span class="string">'/'</span> ? mountAt.slice(<span class="number">0</span>, <span class="number">-1</span>) : mountAt;</span><br><span class="line">  <span class="comment">// 同步判断是否存在dest，若不存在则创建</span></span><br><span class="line">  <span class="keyword">if</span> (fs.existsSync(dest) === <span class="literal">false</span>) &#123;</span><br><span class="line">    fs.mkdirsSync(dest);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 解析ctx.path.slice(mountAt.length)</span></span><br><span class="line">    <span class="keyword">const</span> subPath = path.parse(ctx.path.slice(mountAt.length));</span><br><span class="line">    <span class="comment">// 得到.scss路径</span></span><br><span class="line">    <span class="keyword">const</span> srcFile = path.join(src, subPath.dir, subPath.name + <span class="string">'.scss'</span>);</span><br><span class="line">    <span class="comment">// 判断srcFile是否存在，并且后缀名不能为.css</span></span><br><span class="line">    <span class="keyword">if</span> (fs.existsSync(srcFile) === <span class="literal">false</span> || subPath.ext !== <span class="string">'.css'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> next();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 得到目标路径</span></span><br><span class="line">    <span class="keyword">const</span> destFile = path.join(dest, subPath.dir, subPath.base);</span><br><span class="line">    <span class="comment">// 通过node-sass提供的renderSync返回结果</span></span><br><span class="line">    <span class="keyword">const</span> result = sass.renderSync(&#123;</span><br><span class="line">      file: srcFile,</span><br><span class="line">      importer: nodeSassGlobImporter(),</span><br><span class="line">      includePaths: importPaths</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 同步写入</span></span><br><span class="line">    fs.writeFileSync(destFile, result.css);</span><br><span class="line">    <span class="comment">// 最后通过koa-mount koa-static</span></span><br><span class="line">    <span class="keyword">return</span> mount(mountAt, serveStatic(dest))(ctx, next);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>首选是判断需要解析的文件，接着解析路径，然后得到源 <code>.scss</code> 文件路径，再接着重新得到目标文件路径，然后通过 <code>node-sass</code> 提供的renderSync执行 <code>.scss</code> 结果。然后写入，最后通过 <code>koa-mount</code> 和 <code>koa-static</code> 解析静态资源。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>Koa系列-Error reporting：koa-error</title>
@@ -113,35 +141,6 @@
         
           &lt;p&gt;主要通过 &lt;code&gt;sequelize&lt;/code&gt; 和 &lt;code&gt;squel&lt;/code&gt; 来操作数据库。&lt;/p&gt;
 &lt;p&gt;参数 &lt;code&gt;configs&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列-Caching：koa-etag</title>
-    <link href="http://yoursite.com/2019/01/20/koa/koa-etag/"/>
-    <id>http://yoursite.com/2019/01/20/koa/koa-etag/</id>
-    <published>2019-01-20T07:25:34.000Z</published>
-    <updated>2019-01-30T02:27:57.278Z</updated>
-    
-    <content type="html"><![CDATA[<p>有以下几种情况不能使用 <code>etag</code>：</p><p>1.没有响应实体<br>2.已设置了 <code>etag</code><br>3.http状态码不是 <code>2xx</code><br>4.响应实体是 <code>stream</code> 类型，没有具体路径也不行</p><p>最后是使用了包 <code>etag</code> 生成具体的 <code>etag</code></p><p>参考: <a href="https://www.cnblogs.com/etoah/p/5579622.html" target="_blank" rel="noopener">浏览器缓存</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;有以下几种情况不能使用 &lt;code&gt;etag&lt;/code&gt;：&lt;/p&gt;
-&lt;p&gt;1.没有响应实体&lt;br&gt;2.已设置了 &lt;code&gt;etag&lt;/code&gt;&lt;br&gt;3.http状态码不是 &lt;code&gt;2xx&lt;/code&gt;&lt;br&gt;4.响应实体是
         
       
     
