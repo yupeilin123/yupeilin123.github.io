@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-14T06:32:23.171Z</updated>
+  <updated>2019-03-11T02:12:40.140Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-Error reporting：koa-error</title>
+    <link href="http://yoursite.com/2019/03/11/koa/koa-error/"/>
+    <id>http://yoursite.com/2019/03/11/koa/koa-error/</id>
+    <published>2019-03-11T01:50:10.000Z</published>
+    <updated>2019-03-11T02:12:40.140Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">opts</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">ctx,next</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>选项 <code>opts</code> 有 <code>env</code> , <code>ctx</code> , <code>request</code> , <code>response</code> , <code>error</code> , <code>stack</code> ,<code>status</code> , <code>code</code> 这几个选项，可以覆盖默认参数。</p><p>通过模块引擎整合库 <code>consolidate</code> 可以选择不同的模板引擎。</p><p>返回的async函数，首先判断是否 <code>status</code> 为400，否则就根据 <code>ctx.accepts</code> 的值（’text’,’json’,’html’)来执行相对应的代码。</p><p>若为 <code>html</code> ，则通过 <code>consolidate</code> 生成 <code>error html</code>。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>HyperApp源码解析</title>
@@ -114,35 +142,6 @@
         
           &lt;p&gt;有以下几种情况不能使用 &lt;code&gt;etag&lt;/code&gt;：&lt;/p&gt;
 &lt;p&gt;1.没有响应实体&lt;br&gt;2.已设置了 &lt;code&gt;etag&lt;/code&gt;&lt;br&gt;3.http状态码不是 &lt;code&gt;2xx&lt;/code&gt;&lt;br&gt;4.响应实体是
-        
-      
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列-Compression：koa-compress</title>
-    <link href="http://yoursite.com/2019/01/18/koa/koa-compress/"/>
-    <id>http://yoursite.com/2019/01/18/koa/koa-compress/</id>
-    <published>2019-01-18T03:18:29.000Z</published>
-    <updated>2019-01-20T07:25:54.493Z</updated>
-    
-    <content type="html"><![CDATA[<p>使用该库进行压缩，有以下几个条件，若哪一条不能通过，则不需要进行压缩。</p><p>1.必须得有 <code>body</code><br>2.响应头是否已经发送或者响应是否已经结束<br>3.是否设置了 <code>compress = false</code><br>4.请求方法不能是 <code>HEAD</code><br>5.判断状态码是否不能包含消息体<br>6.响应头是否已经存在 <code>Content-Encoding</code><br>7.筛选响应体的类型<br>8.是否可以设置 <code>acceptsEncodings(&#39;gzip&#39;,&#39;deflate&#39;,&#39;identity&#39;)</code><br>9.内容编码为 <code>identity</code><br>10.响应内容大小是否小与设置值</p><p>最后即使用 <code>gzip</code> or <code>defalte</code> 进行压缩传输。</p><p>参考：<a href="https://blog.csdn.net/u014569188/article/details/78912446" target="_blank" rel="noopener">http协议中的Content-Encoding</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;使用该库进行压缩，有以下几个条件，若哪一条不能通过，则不需要进行压缩。&lt;/p&gt;
-&lt;p&gt;1.必须得有 &lt;code&gt;body&lt;/code&gt;&lt;br&gt;2.响应头是否已经发送或者响应是否已经结束&lt;br&gt;3.是否设置了 &lt;code&gt;compress =
         
       
     
