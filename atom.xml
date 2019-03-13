@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-11T09:51:06.560Z</updated>
+  <updated>2019-03-13T03:36:30.338Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-Livereload：koa-livereload</title>
+    <link href="http://yoursite.com/2019/03/13/koa-livereload/"/>
+    <id>http://yoursite.com/2019/03/13/koa-livereload/</id>
+    <published>2019-03-13T03:27:27.000Z</published>
+    <updated>2019-03-13T03:36:30.338Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">livereload</span>(<span class="params">opts</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 选项</span></span><br><span class="line">  opts = opts || &#123;&#125;;</span><br><span class="line">  <span class="comment">// 端口</span></span><br><span class="line">  <span class="keyword">var</span> port = opts.port || <span class="number">35729</span>;</span><br><span class="line">  <span class="comment">// livereload.js文件的路径</span></span><br><span class="line">  <span class="keyword">var</span> src = opts.src || <span class="string">"' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':"</span> + port + <span class="string">"/livereload.js?snipver=1"</span>;</span><br><span class="line">  <span class="keyword">var</span> snippet = <span class="string">"\n&lt;script type=\"text/javascript\"&gt;document.write('&lt;script src=\""</span> + src + <span class="string">"\" type=\"text/javascript\"&gt;&lt;\\/script&gt;')&lt;/script&gt;\n"</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> next().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// content-type 不是 text/html 则返回</span></span><br><span class="line">    <span class="keyword">if</span> (ctx.response.type &amp;&amp; !ctx.response.type.includes(<span class="string">'html'</span>)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 实际请求路径在排除路径中，则返回</span></span><br><span class="line">    <span class="keyword">if</span> (opts.excludes) &#123;</span><br><span class="line">      <span class="keyword">var</span> path = ctx.path;</span><br><span class="line">      <span class="keyword">if</span> (opts.excludes.some(<span class="function"><span class="params">exclude</span> =&gt;</span> path.startsWith(exclude))) <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Buffer处理，转化为字符串</span></span><br><span class="line">    <span class="keyword">if</span> (Buffer.isBuffer(ctx.body)) &#123;</span><br><span class="line">      ctx.body = ctx.body.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// string处理，在&lt;/body&gt;之前增加snippet</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> ctx.body === <span class="string">'string'</span>) &#123;</span><br><span class="line">      <span class="comment">// 已经存在livereload.js 则返回</span></span><br><span class="line">      <span class="keyword">if</span> (ctx.body.match(<span class="regexp">/livereload.js/</span>)) <span class="keyword">return</span>;</span><br><span class="line">      ctx.body = ctx.body.replace(<span class="regexp">/&lt;\/body&gt;/</span>, snippet + <span class="string">"&lt;\/body&gt;"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// stream处理，通过模板StreamInjecter处理</span></span><br><span class="line">    <span class="keyword">if</span> (ctx.body &amp;&amp; <span class="keyword">typeof</span> ctx.body.pipe === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> injecter = <span class="keyword">new</span> StreamInjecter(&#123;</span><br><span class="line">        matchRegExp : <span class="regexp">/(&lt;\/body&gt;)/</span>,</span><br><span class="line">        inject : snippet,</span><br><span class="line">        replace : snippet + <span class="string">"$1"</span>,</span><br><span class="line">        ignore : <span class="regexp">/livereload.js/</span></span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">var</span> size = +ctx.response.header[<span class="string">'content-length'</span>];</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (size) ctx.set(<span class="string">'Content-Length'</span>, size + Buffer.byteLength(snippet));</span><br><span class="line">      ctx.body = ctx.body.pipe(injecter);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>应用程序的热更新，现在已经有了很好的选择，如 <code>koa-webpack</code> , <code>nodemon</code>, <code>pm2</code> 等。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>Koa系列CSS Preprocessor：koa-sass</title>
@@ -112,35 +140,6 @@
         
           &lt;p&gt;这个中间件用于模板渲染，以包 &lt;code&gt;consolidate&lt;/code&gt; 为默认的渲染引擎集合包，支持多种不同模板引擎。&lt;/p&gt;
 &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
-        
-      
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列-Services：koa-orm</title>
-    <link href="http://yoursite.com/2019/01/30/koa/koa-orm/"/>
-    <id>http://yoursite.com/2019/01/30/koa/koa-orm/</id>
-    <published>2019-01-30T02:25:19.000Z</published>
-    <updated>2019-01-30T03:02:27.963Z</updated>
-    
-    <content type="html"><![CDATA[<p>主要通过 <code>sequelize</code> 和 <code>squel</code> 来操作数据库。</p><p>参数 <code>configs</code> 可以是object或者是array，也就是可以有多个database实例。</p><p><code>configs</code> 有一个属性是 <code>modelPath</code> ,用来导入 <code>model</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">sequelize, modelPath</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> models = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Bootstrap models</span></span><br><span class="line">  fs.readdirSync(modelPath) <span class="comment">// 得是个文件夹，应该需要判断</span></span><br><span class="line">    .forEach(<span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="regexp">/\.js$/</span>.test(file)) &#123;</span><br><span class="line">        <span class="keyword">const</span> model = sequelize.import(join(modelPath, file));</span><br><span class="line">        models[model.name] = model;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.keys(models).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">modelName</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (models[modelName].associate) &#123;</span><br><span class="line">      models[modelName].associate(models);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> models;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>最后导出 <code>database</code> ，挂载到 <code>ctx.orm</code> 上。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;主要通过 &lt;code&gt;sequelize&lt;/code&gt; 和 &lt;code&gt;squel&lt;/code&gt; 来操作数据库。&lt;/p&gt;
-&lt;p&gt;参数 &lt;code&gt;configs&lt;/code&gt;
         
       
     
