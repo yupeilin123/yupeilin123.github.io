@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-27T03:17:19.658Z</updated>
+  <updated>2019-03-27T05:38:16.517Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-Metrics：koa-response-time</title>
+    <link href="http://yoursite.com/2019/03/27/koa/koa-response-time/"/>
+    <id>http://yoursite.com/2019/03/27/koa/koa-response-time/</id>
+    <published>2019-03-27T05:30:29.000Z</published>
+    <updated>2019-03-27T05:38:16.517Z</updated>
+    
+    <content type="html"><![CDATA[<p>总体来说比较简单，主要用到了 <code>process.hrtime</code> 这个方法。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">responseTime</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> hrtime = options &amp;&amp; options.hrtime;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">responseTime</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> start = process.hrtime();</span><br><span class="line">    <span class="keyword">return</span> next().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> delta = process.hrtime(start);</span><br><span class="line">      <span class="comment">// delata是纳秒级别的，所以要转微妙</span></span><br><span class="line">      delta = delta[<span class="number">0</span>] * <span class="number">1000</span> + delta[<span class="number">1</span>] / <span class="number">1000000</span>;</span><br><span class="line">      <span class="keyword">if</span> (!hrtime) &#123;</span><br><span class="line">        <span class="comment">// 转为毫秒</span></span><br><span class="line">        delta = <span class="built_in">Math</span>.round(delta);</span><br><span class="line">      &#125;</span><br><span class="line">      ctx.set(<span class="string">'X-Response-Time'</span>, delta + <span class="string">'ms'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>参考 <a href="https://nodejs.org/dist/latest-v10.x/docs/api/process.html#process_process_hrtime_time" target="_blank" rel="noopener">process.hrtime</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;总体来说比较简单，主要用到了 &lt;code&gt;process.hrtime&lt;/code&gt; 这个方法。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>Koa系列-Livereload：koa-livereload</title>
@@ -120,35 +149,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列-Templating：koa-views</title>
-    <link href="http://yoursite.com/2019/02/11/koa/koa-views/"/>
-    <id>http://yoursite.com/2019/02/11/koa/koa-views/</id>
-    <published>2019-02-11T06:54:06.000Z</published>
-    <updated>2019-02-14T06:13:10.705Z</updated>
-    
-    <content type="html"><![CDATA[<p>这个中间件用于模板渲染，以包 <code>consolidate</code> 为默认的渲染引擎集合包，支持多种不同模板引擎。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数设置以及视图的地址，必须使用绝对地址</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">viewsMiddleware</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  path,</span></span></span><br><span class="line"><span class="function"><span class="params">  &#123; engineSource = consolidate, extension = <span class="string">'html'</span>, options = &#123;&#125;, map &#125; = &#123;&#125; </span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">views</span>(<span class="params">ctx,next</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 判断是否存在render函数，有则跳过后续代码</span></span><br><span class="line">    <span class="keyword">if</span>(ctx.render) <span class="keyword">return</span> next()</span><br><span class="line">    ctx.response.render = ctx.render = <span class="function"><span class="keyword">function</span>(<span class="params">relaPath,locals = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 包get-paths用来得到模板引擎视图的绝对路径</span></span><br><span class="line">      <span class="keyword">return</span> getPaths(path, relaPath, extension).then(<span class="function"><span class="params">paths</span> =&gt;</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>之后就来决定是使用 <code>send</code> 返回默认 <code>.html</code> 文件还是需要使用模板引擎。</p><p>有个小细节就是，是否需要美化代码，是通过 <code>locals.pretty</code> 判断。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;这个中间件用于模板渲染，以包 &lt;code&gt;consolidate&lt;/code&gt; 为默认的渲染引擎集合包，支持多种不同模板引擎。&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
-        
-      
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
     
   </entry>
   
