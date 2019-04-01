@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-28T06:37:41.306Z</updated>
+  <updated>2019-04-01T06:59:46.811Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa系列-Response Transformation：koa-res</title>
+    <link href="http://yoursite.com/2019/04/01/koa/koa-res/"/>
+    <id>http://yoursite.com/2019/04/01/koa/koa-res/</id>
+    <published>2019-04-01T06:54:02.000Z</published>
+    <updated>2019-04-01T06:59:46.811Z</updated>
+    
+    <content type="html"><![CDATA[<p>代码比较简单，干净。主要是控制responseBody的数据。</p><p>首先判断 <code>options.custom</code> 是不是一个函数，若不是则提示类型错误。</p><p>然后如果存在 <code>ctx._returnRaw</code> 为 <code>true</code>，则直接返回 <code>ctx.body</code> 。</p><p>否则，</p><a id="more"></a><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> status = ctx.status</span><br><span class="line"><span class="keyword">const</span> data = ctx.body</span><br><span class="line"><span class="comment">// 忽略 method = option and status = 404</span></span><br><span class="line"><span class="keyword">if</span> (ctx.method.toLowerCase !== <span class="string">'option'</span> &amp;&amp; status !== <span class="number">404</span>) &#123;</span><br><span class="line">  ctx.body = &#123;</span><br><span class="line">    ok: <span class="literal">true</span>,</span><br><span class="line">    data: data,</span><br><span class="line">    version: options.version || version || <span class="string">'1.0.0'</span>,</span><br><span class="line">    now: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (custom) &#123;</span><br><span class="line">    <span class="built_in">Object</span>.assign(ctx.body, custom(ctx))</span><br><span class="line">  &#125;</span><br><span class="line">  ctx.status = status</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果应用运行错误，则在 <code>ctx.body</code> 中加入 <code>statck: e.stack</code> 。</p><p>配置了 <code>options.debug = true</code> ，则不显示 <code>ctx.body.stack</code> 。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;代码比较简单，干净。主要是控制responseBody的数据。&lt;/p&gt;
+&lt;p&gt;首先判断 &lt;code&gt;options.custom&lt;/code&gt; 是不是一个函数，若不是则提示类型错误。&lt;/p&gt;
+&lt;p&gt;然后如果存在 &lt;code&gt;ctx._returnRaw&lt;/code&gt; 为 &lt;code&gt;true&lt;/code&gt;，则直接返回 &lt;code&gt;ctx.body&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;否则，&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
+    
+    
+      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
+    
+  </entry>
   
   <entry>
     <title>Koa系列-i18n：koa-i18n</title>
@@ -107,34 +132,6 @@
     <updated>2019-03-27T03:17:19.658Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">livereload</span>(<span class="params">opts</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 选项</span></span><br><span class="line">  opts = opts || &#123;&#125;;</span><br><span class="line">  <span class="comment">// 端口</span></span><br><span class="line">  <span class="keyword">var</span> port = opts.port || <span class="number">35729</span>;</span><br><span class="line">  <span class="comment">// livereload.js文件的路径</span></span><br><span class="line">  <span class="keyword">var</span> src = opts.src || <span class="string">"' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':"</span> + port + <span class="string">"/livereload.js?snipver=1"</span>;</span><br><span class="line">  <span class="keyword">var</span> snippet = <span class="string">"\n&lt;script type=\"text/javascript\"&gt;document.write('&lt;script src=\""</span> + src + <span class="string">"\" type=\"text/javascript\"&gt;&lt;\\/script&gt;')&lt;/script&gt;\n"</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> next().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// content-type 不是 text/html 则返回</span></span><br><span class="line">    <span class="keyword">if</span> (ctx.response.type &amp;&amp; !ctx.response.type.includes(<span class="string">'html'</span>)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 实际请求路径在排除路径中，则返回</span></span><br><span class="line">    <span class="keyword">if</span> (opts.excludes) &#123;</span><br><span class="line">      <span class="keyword">var</span> path = ctx.path;</span><br><span class="line">      <span class="keyword">if</span> (opts.excludes.some(<span class="function"><span class="params">exclude</span> =&gt;</span> path.startsWith(exclude))) <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Buffer处理，转化为字符串</span></span><br><span class="line">    <span class="keyword">if</span> (Buffer.isBuffer(ctx.body)) &#123;</span><br><span class="line">      ctx.body = ctx.body.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// string处理，在&lt;/body&gt;之前增加snippet</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> ctx.body === <span class="string">'string'</span>) &#123;</span><br><span class="line">      <span class="comment">// 已经存在livereload.js 则返回</span></span><br><span class="line">      <span class="keyword">if</span> (ctx.body.match(<span class="regexp">/livereload.js/</span>)) <span class="keyword">return</span>;</span><br><span class="line">      ctx.body = ctx.body.replace(<span class="regexp">/&lt;\/body&gt;/</span>, snippet + <span class="string">"&lt;\/body&gt;"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// stream处理，通过模板StreamInjecter处理</span></span><br><span class="line">    <span class="keyword">if</span> (ctx.body &amp;&amp; <span class="keyword">typeof</span> ctx.body.pipe === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> injecter = <span class="keyword">new</span> StreamInjecter(&#123;</span><br><span class="line">        matchRegExp : <span class="regexp">/(&lt;\/body&gt;)/</span>,</span><br><span class="line">        inject : snippet,</span><br><span class="line">        replace : snippet + <span class="string">"$1"</span>,</span><br><span class="line">        ignore : <span class="regexp">/livereload.js/</span></span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">var</span> size = +ctx.response.header[<span class="string">'content-length'</span>];</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (size) ctx.set(<span class="string">'Content-Length'</span>, size + Buffer.byteLength(snippet));</span><br><span class="line">      ctx.body = ctx.body.pipe(injecter);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>应用程序的热更新，现在已经有了很好的选择，如 <code>koa-webpack</code> , <code>nodemon</code>, <code>pm2</code> 等。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-      <category term="Koa" scheme="http://yoursite.com/categories/Koa/"/>
-    
-    
-      <category term="koa" scheme="http://yoursite.com/tags/koa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Koa系列CSS Preprocessor：koa-sass</title>
-    <link href="http://yoursite.com/2019/03/11/koa/koa-sass/"/>
-    <id>http://yoursite.com/2019/03/11/koa/koa-sass/</id>
-    <published>2019-03-11T09:39:21.000Z</published>
-    <updated>2019-03-11T09:51:06.560Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">&#123; mountAt, src, dest, importPaths = [] &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 判断mountAt后缀是否为'/' ，若是则去掉</span></span><br><span class="line">  mountAt = mountAt.substr(<span class="number">-1</span>) === <span class="string">'/'</span> ? mountAt.slice(<span class="number">0</span>, <span class="number">-1</span>) : mountAt;</span><br><span class="line">  <span class="comment">// 同步判断是否存在dest，若不存在则创建</span></span><br><span class="line">  <span class="keyword">if</span> (fs.existsSync(dest) === <span class="literal">false</span>) &#123;</span><br><span class="line">    fs.mkdirsSync(dest);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 解析ctx.path.slice(mountAt.length)</span></span><br><span class="line">    <span class="keyword">const</span> subPath = path.parse(ctx.path.slice(mountAt.length));</span><br><span class="line">    <span class="comment">// 得到.scss路径</span></span><br><span class="line">    <span class="keyword">const</span> srcFile = path.join(src, subPath.dir, subPath.name + <span class="string">'.scss'</span>);</span><br><span class="line">    <span class="comment">// 判断srcFile是否存在，并且后缀名不能为.css</span></span><br><span class="line">    <span class="keyword">if</span> (fs.existsSync(srcFile) === <span class="literal">false</span> || subPath.ext !== <span class="string">'.css'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> next();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 得到目标路径</span></span><br><span class="line">    <span class="keyword">const</span> destFile = path.join(dest, subPath.dir, subPath.base);</span><br><span class="line">    <span class="comment">// 通过node-sass提供的renderSync返回结果</span></span><br><span class="line">    <span class="keyword">const</span> result = sass.renderSync(&#123;</span><br><span class="line">      file: srcFile,</span><br><span class="line">      importer: nodeSassGlobImporter(),</span><br><span class="line">      includePaths: importPaths</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 同步写入</span></span><br><span class="line">    fs.writeFileSync(destFile, result.css);</span><br><span class="line">    <span class="comment">// 最后通过koa-mount koa-static</span></span><br><span class="line">    <span class="keyword">return</span> mount(mountAt, serveStatic(dest))(ctx, next);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>首选是判断需要解析的文件，接着解析路径，然后得到源 <code>.scss</code> 文件路径，再接着重新得到目标文件路径，然后通过 <code>node-sass</code> 提供的renderSync执行 <code>.scss</code> 结果。然后写入，最后通过 <code>koa-mount</code> 和 <code>koa-static</code> 解析静态资源。</p>]]></content>
     
     <summary type="html">
     
