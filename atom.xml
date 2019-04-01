@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-01T06:59:46.811Z</updated>
+  <updated>2019-04-01T07:02:06.138Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,16 +21,15 @@
     <link href="http://yoursite.com/2019/04/01/koa/koa-res/"/>
     <id>http://yoursite.com/2019/04/01/koa/koa-res/</id>
     <published>2019-04-01T06:54:02.000Z</published>
-    <updated>2019-04-01T06:59:46.811Z</updated>
+    <updated>2019-04-01T07:02:06.138Z</updated>
     
-    <content type="html"><![CDATA[<p>代码比较简单，干净。主要是控制responseBody的数据。</p><p>首先判断 <code>options.custom</code> 是不是一个函数，若不是则提示类型错误。</p><p>然后如果存在 <code>ctx._returnRaw</code> 为 <code>true</code>，则直接返回 <code>ctx.body</code> 。</p><p>否则，</p><a id="more"></a><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> status = ctx.status</span><br><span class="line"><span class="keyword">const</span> data = ctx.body</span><br><span class="line"><span class="comment">// 忽略 method = option and status = 404</span></span><br><span class="line"><span class="keyword">if</span> (ctx.method.toLowerCase !== <span class="string">'option'</span> &amp;&amp; status !== <span class="number">404</span>) &#123;</span><br><span class="line">  ctx.body = &#123;</span><br><span class="line">    ok: <span class="literal">true</span>,</span><br><span class="line">    data: data,</span><br><span class="line">    version: options.version || version || <span class="string">'1.0.0'</span>,</span><br><span class="line">    now: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (custom) &#123;</span><br><span class="line">    <span class="built_in">Object</span>.assign(ctx.body, custom(ctx))</span><br><span class="line">  &#125;</span><br><span class="line">  ctx.status = status</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果应用运行错误，则在 <code>ctx.body</code> 中加入 <code>statck: e.stack</code> 。</p><p>配置了 <code>options.debug = true</code> ，则不显示 <code>ctx.body.stack</code> 。</p>]]></content>
+    <content type="html"><![CDATA[<p>代码比较简单，干净。主要是控制responseBody的数据。</p><p>首先判断 <code>options.custom</code> 是不是一个函数，若不是则提示类型错误。</p><p>然后如果存在 <code>ctx._returnRaw</code> 为 <code>true</code>，则直接返回 <code>ctx.body</code> 。</p><a id="more"></a><p>否则，</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> status = ctx.status</span><br><span class="line"><span class="keyword">const</span> data = ctx.body</span><br><span class="line"><span class="comment">// 忽略 method = option and status = 404</span></span><br><span class="line"><span class="keyword">if</span> (ctx.method.toLowerCase !== <span class="string">'option'</span> &amp;&amp; status !== <span class="number">404</span>) &#123;</span><br><span class="line">  ctx.body = &#123;</span><br><span class="line">    ok: <span class="literal">true</span>,</span><br><span class="line">    data: data,</span><br><span class="line">    version: options.version || version || <span class="string">'1.0.0'</span>,</span><br><span class="line">    now: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (custom) &#123;</span><br><span class="line">    <span class="built_in">Object</span>.assign(ctx.body, custom(ctx))</span><br><span class="line">  &#125;</span><br><span class="line">  ctx.status = status</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果应用运行错误，则在 <code>ctx.body</code> 中加入 <code>statck: e.stack</code> 。</p><p>配置了 <code>options.debug = true</code> ，则不显示 <code>ctx.body.stack</code> 。</p>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;代码比较简单，干净。主要是控制responseBody的数据。&lt;/p&gt;
 &lt;p&gt;首先判断 &lt;code&gt;options.custom&lt;/code&gt; 是不是一个函数，若不是则提示类型错误。&lt;/p&gt;
 &lt;p&gt;然后如果存在 &lt;code&gt;ctx._returnRaw&lt;/code&gt; 为 &lt;code&gt;true&lt;/code&gt;，则直接返回 &lt;code&gt;ctx.body&lt;/code&gt; 。&lt;/p&gt;
-&lt;p&gt;否则，&lt;/p&gt;
     
     </summary>
     
